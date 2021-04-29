@@ -1,4 +1,4 @@
-package com.dxpru.game.entity;
+package com.game.entity;
 
 public abstract class Entity {
 
