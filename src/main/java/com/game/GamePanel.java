@@ -64,6 +64,8 @@ public class GamePanel extends JPanel implements Runnable {
     @Override
     public void run() {
         init();
+        
+        // Variables for the Game loop timing
         final double GAME_HERTZ = 60.0;
         final double TRU = 1000000000 / GAME_HERTZ; // Time Before Update
     
@@ -84,6 +86,7 @@ public class GamePanel extends JPanel implements Runnable {
     
         while (running){
         
+            // Querying inputs && updating the Game (tick)
             double now = System.nanoTime();
             int updateCount = 0;
             while (((now - lastUpdateTime) > TRU) && (updateCount < MUBR)){
@@ -97,7 +100,8 @@ public class GamePanel extends JPanel implements Runnable {
             if (now - lastUpdateTime > TRU) {
                 lastUpdateTime = now - TRU;
             }
-        
+            
+            // rendering and drawing (frame)
             input(mouse, key);
             render();
             draw();
@@ -121,13 +125,14 @@ public class GamePanel extends JPanel implements Runnable {
                 lastSecondTime = thisSecond;
             }
         
+            // sleeping until next update
             while (now - lastRenderTime < TTBR && now - lastUpdateTime < TRU){
                 Thread.yield();
             
                 try {
                     Thread.sleep(1);
                 } catch (Exception e){
-                    System.out.println("ERROR: yielding Thread");
+                    System.out.println("ERROR: yielding Thread"); // failed to pause Thread
                 }
             
                 now = System.nanoTime();
