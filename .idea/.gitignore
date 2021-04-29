@@ -3,6 +3,8 @@
 /workspace.xml
 # CodeStream ignored files
 /../../Info_platformer2D_jumpNrun\.idea/codestream.xml
+# Discord ignored files
+/../../Info_platformer2D_jumpNrun\.idea/discord.xml
 # Datasource local storage ignored files
 /../../../../../../:\Users\Dominik\IdeaProjects\Info_platformer2D_jumpNrun\.idea/dataSources/
 /dataSources.local.xml
