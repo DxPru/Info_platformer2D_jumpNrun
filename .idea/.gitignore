@@ -1,0 +1,10 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# CodeStream ignored files
+/../../Info_platformer2D_jumpNrun\.idea/codestream.xml
+# Datasource local storage ignored files
+/../../../../../../:\Users\Dominik\IdeaProjects\Info_platformer2D_jumpNrun\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
