@@ -5,6 +5,7 @@
 
 package com.game.states;
 
+import com.game.Gui;
 import com.game.util.Camera;
 import com.game.util.KeyHandler;
 import com.game.util.MouseHandler;
@@ -16,8 +17,10 @@ import java.util.ArrayList;
 public class GameManager {
     private static ArrayList<GameState> states;
     public static Camera camera = new Camera();
+    public Gui gui;
     
-    public GameManager() {
+    public GameManager(Gui gui) {
+        this.gui = gui;
         states = new ArrayList<GameState>();
         
         states.add(new StartState(this)); // Starting welcome screen

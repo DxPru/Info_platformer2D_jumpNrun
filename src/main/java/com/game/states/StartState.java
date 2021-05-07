@@ -2,12 +2,17 @@ package com.game.states;
 
 import com.game.util.KeyHandler;
 import com.game.util.MouseHandler;
-import com.game.util.Settings;
+import com.game.views.StartView;
 
 import java.awt.*;
 
 public class StartState extends GameState {
-    public StartState(GameManager gameManager) {
+    private StartView renderer;
+    private GameManager gamemanager;
+    
+    public StartState(GameManager gamemanager) {
+        this.gamemanager = gamemanager;
+        renderer = new StartView();
     }
     
     @Override
@@ -22,7 +27,6 @@ public class StartState extends GameState {
     
     @Override
     public void render(Graphics2D g) {
-        g.setColor(Color.black);
-        g.drawString("Hello Start Scene", Settings.WIDTH / 2, Settings.HEIGHT / 2);
+        renderer.render(g);
     }
 }

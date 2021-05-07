@@ -33,9 +33,10 @@ public class GamePanel extends JPanel implements Runnable {
     private KeyHandler key;
     
     private GameManager gamemanager;
-    
+    private Gui gui;
     // Setting up the JPanel (new Window)
-    public GamePanel (int width, int height) {
+    public GamePanel (int width, int height, Gui gui) {
+        this.gui = gui;
         GamePanel.width = width;
         GamePanel.height = height;
         setPreferredSize(new Dimension(width, height));
@@ -65,7 +66,7 @@ public class GamePanel extends JPanel implements Runnable {
         mouse = new MouseHandler(this);
         key = new KeyHandler(this);
         
-        gamemanager = new GameManager();
+        gamemanager = new GameManager(gui);
     }
     
     // method is run at start of the GameThread
@@ -149,12 +150,16 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
     
+    // TODO Temporary exit because of fullscreen should be then in the appropriate GameState
     public void update(float dt){
         this.gamemanager.update(dt);
     }
     
     public void input(MouseHandler mouse, KeyHandler key){
         this.gamemanager.input(mouse, key);
+        if(key.escape.down) {
+            this.gui.close();
+        }
     }
     
     public void render(){
