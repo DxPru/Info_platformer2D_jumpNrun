@@ -1,3 +1,10 @@
+/*
+    This class acts as a main controller managing timing between input, update (logical update) and Rendering (Graphical update)
+    The actions are then past to the GameManager CLASS
+    
+    the initializing of a new Panel is although handled here because only one panel is used
+*/
+
 package com.game;
 
 import com.game.states.GameManager;
@@ -24,7 +31,7 @@ public class GamePanel extends JPanel implements Runnable {
     private MouseHandler mouse;
     private KeyHandler key;
     
-    private GameManager gameManager;
+    private GameManager gamemanager;
     
     // Setting up the JPanel (new Window)
     public GamePanel (int width, int height) {
@@ -57,7 +64,7 @@ public class GamePanel extends JPanel implements Runnable {
         mouse = new MouseHandler(this);
         key = new KeyHandler(this);
         
-        gameManager = new GameManager();
+        gamemanager = new GameManager();
     }
     
     // method is run at start of the GameThread
