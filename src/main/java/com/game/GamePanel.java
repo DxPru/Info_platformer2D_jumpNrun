@@ -10,6 +10,7 @@ package com.game;
 import com.game.states.GameManager;
 import com.game.util.KeyHandler;
 import com.game.util.MouseHandler;
+import com.game.util.Settings;
 
 import javax.swing.*;
 import java.awt.*;
@@ -73,7 +74,7 @@ public class GamePanel extends JPanel implements Runnable {
         init();
         
         // Variables for the Game loop timing
-        final double GAME_HERTZ = 60.0;
+        final double GAME_HERTZ = Settings.GAME_HERTZ;
         final double TRU = 1000000000 / GAME_HERTZ; // Time Before Update
     
         final  int MUBR = 5; // Must Update Before Render
@@ -81,8 +82,8 @@ public class GamePanel extends JPanel implements Runnable {
         double lastUpdateTime = System.nanoTime();
         double lastRenderTime;
     
-        final double TARGET_FPS = 120;
-        final double TTBR = 1000000000 / TARGET_FPS; // Total Time Before Render
+        final double GAME_FPS = Settings.GAME_FPS;
+        final double TTBR = 1000000000 / GAME_FPS; // Total Time Before Render
     
         int frameCount = 0;
         int lastSecondTime = (int) (lastUpdateTime / 1000000000);
@@ -94,10 +95,11 @@ public class GamePanel extends JPanel implements Runnable {
         while (running){
         
             // Querying inputs && updating the Game (tick)
+            
             double now = System.nanoTime();
             int updateCount = 0;
             while (((now - lastUpdateTime) > TRU) && (updateCount < MUBR)){
-                update();
+                update((float) System.nanoTime() - System.nanoTime());
                 input(mouse, key);
                 lastUpdateTime += TRU;
                 updateCount ++;
@@ -147,21 +149,19 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
     
-    // TODO import GameManager
-    
-    public void update(){
-        // gameManager.update();
+    public void update(float dt){
+        this.gamemanager.update(dt);
     }
     
     public void input(MouseHandler mouse, KeyHandler key){
-        // gameManager.input(mouse, key);
+        this.gamemanager.input(mouse, key);
     }
     
     public void render(){
         if(g != null){
             g.setColor(new Color(66, 134, 244));
             g.fillRect(0, 0, width, height);
-            // gameManager.render(g);
+            this.gamemanager.render(g);
         }
     }
     
