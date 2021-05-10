@@ -11,7 +11,9 @@ public class MenuState extends GameState {
     private GameManager gamemanager;
     private View renderer;
     
-    public MenuState(GameManager gameManager) {
+    public MenuState(GameManager gamemanager) {
+        super(gamemanager);
+        this.gamemanager = gamemanager;
         renderer = new MenuView();
     }
     
@@ -21,7 +23,10 @@ public class MenuState extends GameState {
     
     @Override
     public void input(MouseHandler mouse, KeyHandler keyboard) {
-    
+        if (keyboard.escape.down) {
+            System.out.println("Closing");
+            gamemanager.gui.close();
+        }
     }
     
     @Override

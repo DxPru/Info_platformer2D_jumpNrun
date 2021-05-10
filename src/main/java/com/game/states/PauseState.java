@@ -6,7 +6,8 @@ import com.game.util.MouseHandler;
 import java.awt.*;
 
 public class PauseState extends GameState {
-    public PauseState(GameManager gameManager) {
+    public PauseState(GameManager gamemanager) {
+        super(gamemanager);
     }
     
     @Override

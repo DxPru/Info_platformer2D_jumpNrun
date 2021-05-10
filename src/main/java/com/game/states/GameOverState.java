@@ -6,7 +6,8 @@ import com.game.util.MouseHandler;
 import java.awt.*;
 
 public class GameOverState extends GameState {
-    public GameOverState(GameManager gameManager) {
+    public GameOverState(GameManager gamemanager) {
+        super(gamemanager);
     }
     
     @Override

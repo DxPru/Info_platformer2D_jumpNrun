@@ -7,7 +7,7 @@ import java.awt.*;
 
 public abstract class GameState {
 
-    public GameState(){
+    public GameState(GameManager gamemanager){
 
     }
     

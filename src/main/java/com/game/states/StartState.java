@@ -14,6 +14,7 @@ public class StartState extends GameState {
     private int frame = 0;
     
     public StartState(GameManager gamemanager) {
+        super(gamemanager);
         this.gamemanager = gamemanager;
         renderer = new StartView();
     }

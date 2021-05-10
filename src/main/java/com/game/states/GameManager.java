@@ -16,7 +16,6 @@ import java.util.ArrayList;
 
 public class GameManager {
     private static ArrayList<GameState> states;
-    public static Camera camera = new Camera();
     public Gui gui;
     
     public GameManager(Gui gui) {
@@ -24,6 +23,7 @@ public class GameManager {
         states = new ArrayList<GameState>();
         
         states.add(new StartState(this)); // Starting welcome screen
+        // states.add(new PlayState(this)); // loading PlayState in preparation
     }
     
     public void pop(int state) {
@@ -56,7 +56,7 @@ public class GameManager {
     }
     
     public void update(float dt) {
-        camera.updateProjection();
+        Camera.updateProjection();
         for(GameState state : states) {
             state.update(dt);
         }

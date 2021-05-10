@@ -159,9 +159,6 @@ public class GamePanel extends JPanel implements Runnable {
     
     public void input(MouseHandler mouse, KeyHandler key){
         this.gamemanager.input(mouse, key);
-        if(key.escape.down) {
-            this.gui.close();
-        }
     }
     
     public void render(){
