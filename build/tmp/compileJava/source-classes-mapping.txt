@@ -41,3 +41,11 @@ com/game/GamePanel.java
  com.game.GamePanel
 com/game/Gui.java
  com.game.Gui
+com/game/graphics/Sprite.java
+ com.game.graphics.Sprite
+com/game/graphics/Texture.java
+ com.game.graphics.Texture
+com/game/graphics/SpriteSheet.java
+ com.game.graphics.SpriteSheet
+com/game/util/AssetPool.java
+ com.game.util.AssetPool
