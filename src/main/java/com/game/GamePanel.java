@@ -82,6 +82,7 @@ public class GamePanel extends JPanel implements Runnable {
     
         double lastUpdateTime = System.nanoTime();
         double lastRenderTime;
+        double lastUpdate = System.nanoTime();
     
         final double GAME_FPS = Settings.GAME_FPS;
         final double TTBR = 1000000000 / GAME_FPS; // Total Time Before Render
@@ -100,8 +101,9 @@ public class GamePanel extends JPanel implements Runnable {
             double now = System.nanoTime();
             int updateCount = 0;
             while (((now - lastUpdateTime) > TRU) && (updateCount < MUBR)){
-                update((float) System.nanoTime() - System.nanoTime());
+                update((float) (System.currentTimeMillis() - lastUpdate) );
                 input(mouse, key);
+                lastUpdate = System.currentTimeMillis();
                 lastUpdateTime += TRU;
                 updateCount ++;
                 tickCount ++;

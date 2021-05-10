@@ -6,5 +6,5 @@ public abstract class View {
     
     public View() {}
     
-    public abstract void render(Graphics2D g);
+    public abstract void render(Graphics2D g, int frame);
 }

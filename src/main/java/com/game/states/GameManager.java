@@ -24,7 +24,6 @@ public class GameManager {
         states = new ArrayList<GameState>();
         
         states.add(new StartState(this)); // Starting welcome screen
-        states.add(new PlayState(this)); // loading Game
     }
     
     public void pop(int state) {

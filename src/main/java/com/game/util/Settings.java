@@ -14,8 +14,8 @@ public class Settings {
     public static final double GAME_FPS = 120.0;
     
     // Tile config
-    public static final float TILE_SIZE = 32.0f;  // size of the individual Tiles
-    public static final float SCALE = 2.0f; // scale off the individual tiles
+    public static final float TILE_SIZE = 16.0f;  // size of the individual Tiles
+    public static final float SCALE = 7.5f; // scale off the individual tiles
     public static final float PX_TILE_SIZE = SCALE * TILE_SIZE; // Size of the displayed tiles in pixel
     public static final float X_TILECOUNT = WIDTH / PX_TILE_SIZE;
     public static final float Y_TILECOUNT = HEIGHT / PX_TILE_SIZE;

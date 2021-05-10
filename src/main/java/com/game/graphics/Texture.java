@@ -4,6 +4,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 public class Texture {
     private String filepath;
@@ -14,12 +15,13 @@ public class Texture {
         this.filepath = filepath;
         
         try{
-            File file;
-            img = ImageIO.read(getClass().getClassLoader().getResourceAsStream(filepath));
+            img = ImageIO.read(Objects.requireNonNull(new File(filepath)));
         } catch (IOException e) {
             System.out.println("ERROR: could not load file: " + filepath);
             e.printStackTrace();
         }
+        this.width = img.getWidth();
+        this.height = img.getHeight();
     }
     
     public int getWidth() {
@@ -28,5 +30,9 @@ public class Texture {
     
     public int getHeight() {
         return height;
+    }
+    
+    public BufferedImage getImg() {
+        return img;
     }
 }

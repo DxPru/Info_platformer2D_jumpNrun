@@ -2,16 +2,14 @@ package com.game.graphics;
 
 import com.game.util.math.Vector2f;
 
+import java.awt.image.BufferedImage;
+
 public class Sprite {
     
     private float width, height;
     private Texture texture = null;
-    private Vector2f[] texCoords = new Vector2f[]{
-            new Vector2f(1, 1),
-            new Vector2f(1, 0),
-            new Vector2f(0, 0),
-            new Vector2f(0, 1)
-    };
+    private Vector2f texCoords = new Vector2f();
+    private BufferedImage img;
 
     public Texture getTexture() {
         return texture;
@@ -19,6 +17,9 @@ public class Sprite {
     
     public void setTexture(Texture texture) {
         this.texture = texture;
+        if (width != 0 && height != 0 && texture != null) {
+            this.genImage();
+        }
     }
     
     public float getWidth() {
@@ -27,6 +28,9 @@ public class Sprite {
     
     public void setWidth(float width) {
         this.width = width;
+        if (width != 0 && height != 0 && texture != null) {
+            this.genImage();
+        }
     }
     
     public float getHeight() {
@@ -35,13 +39,27 @@ public class Sprite {
     
     public void setHeight(float height) {
         this.height = height;
+        if (width != 0 && height != 0 && texture != null) {
+            this.genImage();
+        }
     }
     
-    public Vector2f[] getTexCoords() {
+    public Vector2f getTexCoords() {
         return texCoords;
     }
     
-    public void setTexCoords(Vector2f[] texCoords) {
+    public void setTexCoords(Vector2f texCoords) {
         this.texCoords = texCoords;
+        if (texture != null && width != 0 && height != 0) {
+            this.genImage();
+        }
+    }
+    
+    private void genImage() {
+        this.img = texture.getImg().getSubimage((int) this.texCoords.x, (int) this.texCoords.y, (int) this.width, (int) this.height);
+    }
+    
+    public BufferedImage getImg() {
+        return this.img;
     }
 }
