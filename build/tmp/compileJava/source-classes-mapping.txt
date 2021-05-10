@@ -10,8 +10,8 @@ com/game/util/MouseHandler.java
  com.game.util.MouseHandler
 com/game/graphics/SpriteSheet.java
  com.game.graphics.SpriteSheet
-com/game/views/MenuView.java
- com.game.views.MenuView
+com/game/states/StartState.java
+ com.game.states.StartState
 com/game/util/math/Vector2f.java
  com.game.util.math.Vector2f
 com/game/states/GameOverState.java
@@ -41,13 +41,13 @@ com/game/views/StartView.java
  com.game.views.StartView
 com/game/util/Settings.java
  com.game.util.Settings
-com/game/states/MenuState.java
- com.game.states.MenuState
+com/game/states/GameManager.java
+ com.game.states.GameManager
 com/game/views/View.java
  com.game.views.View
 com/game/util/AssetPool.java
  com.game.util.AssetPool
-com/game/states/GameManager.java
- com.game.states.GameManager
-com/game/states/StartState.java
- com.game.states.StartState
+com/game/views/MenuView.java
+ com.game.views.MenuView
+com/game/states/MenuState.java
+ com.game.states.MenuState
