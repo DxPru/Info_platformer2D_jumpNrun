@@ -1,15 +1,15 @@
 com/game/graphics/Texture.java
  com.game.graphics.Texture
-com/game/states/GameManager.java
- com.game.states.GameManager
+com/game/graphics/Draw.java
+ com.game.graphics.Draw
 com/game/states/GameState.java
  com.game.states.GameState
 com/game/util/Camera.java
  com.game.util.Camera
-com/game/states/StartState.java
- com.game.states.StartState
-com/game/graphics/SpriteSheet.java
- com.game.graphics.SpriteSheet
+com/game/util/MouseHandler.java
+ com.game.util.MouseHandler
+com/game/states/MenuState.java
+ com.game.states.MenuState
 com/game/views/MenuView.java
  com.game.views.MenuView
 com/game/util/math/Vector2f.java
@@ -27,27 +27,31 @@ com/game/Gui.java
  com.game.Gui
 com/game/GameLauncher.java
  com.game.GameLauncher
-com/game/GameObject/Player.java
- com.game.entity.Player
+com/game/states/GameManager.java
+ com.game.states.GameManager
 com/game/graphics/Renderer.java
  com.game.graphics.Renderer
 com/game/GamePanel.java
  com.game.GamePanel
-com/game/GameObject/GameObject.java
- com.game.entity.GameObject
+com/game/views/View.java
+ com.game.views.View
+com/game/util/DataManager.java
+ com.game.util.DataManager
+com/game/util/Settings.java
+ com.game.util.Settings
+com/game/states/StartState.java
+ com.game.states.StartState
 com/game/graphics/Sprite.java
  com.game.graphics.Sprite
 com/game/views/StartView.java
  com.game.views.StartView
-com/game/util/Settings.java
- com.game.util.Settings
-com/game/states/MenuState.java
- com.game.states.MenuState
-com/game/views/View.java
- com.game.views.View
+com/game/gameObjects/GameObject.java
+ com.game.gameObjects.GameObject
+com/game/graphics/SpriteSheet.java
+ com.game.graphics.SpriteSheet
 com/game/util/AssetPool.java
  com.game.util.AssetPool
-com/game/util/MouseHandler.java
- com.game.util.MouseHandler
-com/game/graphics/Draw.java
- com.game.graphics.Draw
+com/game/gameObjects/Entity.java
+ com.game.gameObjects.Entity
+com/game/gameObjects/Player.java
+ com.game.gameObjects.Player

@@ -9,11 +9,11 @@ import java.awt.*;
 public class StartView extends View {
     
     public StartView() {
-        AssetPool.addSpriteSheet("res/images/LoadingScreen.png", new SpriteSheet(AssetPool.getTexture("res/images/LoadingScreen.png"), 256, 144, 4, 0));
+        AssetPool.addSpriteSheet("res/images/LoadingScreen.png", new SpriteSheet(AssetPool.getTexture("res/images/LoadingScreen.png"), 256, 144, 1, 4));
     }
     
     @Override
     public void render(Graphics2D g, int frame) {
-        g.drawImage(AssetPool.getSpriteSheet("res/images/LoadingScreen.png").getSprite(frame).getImg(), 0,0,Settings.WIDTH, Settings.HEIGHT, null);
+        g.drawImage(AssetPool.getSpriteSheet("res/images/LoadingScreen.png").getSprite(0, frame).getImg(), 0,0,Settings.WIDTH, Settings.HEIGHT, null);
     }
 }

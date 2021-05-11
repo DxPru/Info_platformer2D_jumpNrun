@@ -8,36 +8,44 @@ import java.util.List;
 public class SpriteSheet {
     
     private Texture texture;
-    private List<Sprite> sprites;
+    private Sprite[][] sprites;
+    private int width, height;
     
-    public SpriteSheet(Texture texture, int spriteWidth, int spriteHeight, int numSprites, int spacing) {
-        this.sprites = new ArrayList<Sprite>();
+    public SpriteSheet(Texture texture, int spriteWidth, int spriteHeight, int numHSprites, int numVSprites) {
+        this.width = numVSprites;
+        this.height = numHSprites;
+        this.sprites = new Sprite[numHSprites][numVSprites];
         
         this.texture = texture;
-        int currentX = 0;
-        int currentY = 0;
-        for (int i = 0; i < numSprites; i++) {
-            Vector2f texCoords = new Vector2f(currentX, currentY);
-            Sprite sprite = new Sprite();
-            sprite.setTexture(texture);
-            sprite.setTexCoords(texCoords);
-            sprite.setWidth(spriteWidth);
-            sprite.setHeight(spriteHeight);
-            sprites.add(sprite);
-            
-            currentX += spriteWidth + spacing;
-            if (currentX >= texture.getWidth()) {
-                currentX = 0;
-                currentY += spriteHeight + spacing;
+        for (int y = 0; y < numHSprites; y++) {
+            for (int x = 0; x < numVSprites; x++) {
+                Vector2f texCoords = new Vector2f(x * spriteWidth, y * spriteHeight);
+                Sprite sprite = new Sprite();
+                sprite.setTexture(texture);
+                sprite.setTexCoords(texCoords);
+                sprite.setWidth(spriteWidth);
+                sprite.setHeight(spriteHeight);
+                sprites[y][x] = sprite;
             }
         }
     }
     
-    public Sprite getSprite(int index) {
-        return this.sprites.get(index);
+    public Sprite[] getSprites(int index) {
+        return this.sprites[index];
     }
     
-    public int getSize() {
-        return this.sprites.size();
+    public Sprite getSprite(int y, int x) {
+        if (this.width > x && this.height > y) {
+            return this.sprites[y][x];
+        }
+        return this.sprites[0][0];
+    }
+    
+    public int getHeight() {
+        return this.height;
+    }
+    
+    public int getWidth() {
+        return this.width;
     }
 }

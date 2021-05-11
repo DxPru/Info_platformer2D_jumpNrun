@@ -4,11 +4,12 @@ import com.game.util.KeyHandler;
 import com.game.util.MouseHandler;
 import com.game.util.Settings;
 import com.game.views.StartView;
+import com.game.views.View;
 
 import java.awt.*;
 
 public class StartState extends GameState {
-    private StartView renderer;
+    private View renderer;
     private GameManager gamemanager;
     private int timeLeft = 1000;
     private int frame = 0;
