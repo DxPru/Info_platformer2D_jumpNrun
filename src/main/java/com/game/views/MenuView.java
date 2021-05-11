@@ -11,7 +11,7 @@ public class MenuView extends View{
     
     @Override
     public void render(Graphics2D g, int frame, ArrayList<RenderedImage> renderedImages) {
-        g.drawImage(AssetPool.getTexture("res/images/Info_Jump'n'Run.png").getImg(), 0, 0, Settings.PX_WIDTH, Settings.PX_HEIGHT, null);
+        g.drawImage(AssetPool.getSpriteSheet("res/images/LoadingScreen.png").getSprite(0,0).getImg(), 0, 0, Settings.PX_WIDTH, Settings.PX_HEIGHT, null);
         renderer.render(g, renderedImages);
         g.setColor(Color.lightGray);
         g.setFont(new Font("Hack", Font.PLAIN, 24));

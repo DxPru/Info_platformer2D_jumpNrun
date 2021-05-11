@@ -2,6 +2,7 @@ package com.game.states;
 
 import com.game.gameObjects.Button;
 import com.game.gameObjects.DebugButton;
+import com.game.gameObjects.ExitButton;
 import com.game.graphics.SpriteSheet;
 import com.game.util.*;
 import com.game.util.math.Vector2f;
@@ -34,7 +35,7 @@ public class MenuState extends GameState {
         buttons[0] = new DebugButton(new Vector2f((float) ((Settings.WIDTH / 2) - buttonWidth / 2), 20),ButtonPath, 0); //Play button
         buttons[0].setFocused(true);
         buttons[1] = new DebugButton(new Vector2f((float) ((Settings.WIDTH / 2) - buttonWidth / 2), 60),ButtonPath, 2); //Username button
-        buttons[2] = new DebugButton(new Vector2f((float) ((Settings.WIDTH) - buttonWidth) - 12, 100),ButtonPath, 1); //Exit button
+        buttons[2] = new ExitButton(new Vector2f((float) ((Settings.WIDTH) - buttonWidth) - 12, 100),ButtonPath, 1); //Exit button
     }
     
     @Override
@@ -52,11 +53,6 @@ public class MenuState extends GameState {
     
     @Override
     public void input(MouseHandler mouse, KeyHandler key) {
-        // TODO Temporary exit because of fullscreen should be done over the buttons
-        if (key.escape.down) {
-            System.out.println("Closing");
-            gamemanager.gui.close();
-        }
         if (key.up.clicked) {
             focusedButton--;
             if (focusedButton < 0) {

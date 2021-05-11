@@ -33,10 +33,8 @@ public class GamePanel extends JPanel implements Runnable {
     private KeyHandler key;
     
     private GameManager gamemanager;
-    private Gui gui;
     // Setting up the JPanel (new Window)
-    public GamePanel (int width, int height, Gui gui) {
-        this.gui = gui;
+    public GamePanel (int width, int height) {
         GamePanel.width = width;
         GamePanel.height = height;
         setPreferredSize(new Dimension(width, height));
@@ -66,7 +64,7 @@ public class GamePanel extends JPanel implements Runnable {
         mouse = new MouseHandler(this);
         key = new KeyHandler(this);
         
-        gamemanager = new GameManager(gui);
+        gamemanager = new GameManager();
     }
     
     // method is run at start of the GameThread
