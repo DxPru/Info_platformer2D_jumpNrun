@@ -16,8 +16,8 @@ com/game/util/math/Vector2f.java
  com.game.util.math.Vector2f
 com/game/util/Camera.java
  com.game.util.Camera
-com/game/views/MenuView.java
- com.game.views.MenuView
+com/game/gameObjects/Entity.java
+ com.game.gameObjects.Entity
 com/game/graphics/Sprite.java
  com.game.graphics.Sprite
 com/game/util/DataManager.java
@@ -28,12 +28,12 @@ com/game/util/RenderedImage.java
  com.game.util.RenderedImage
 com/game/GameLauncher.java
  com.game.GameLauncher
-com/game/states/GameManager.java
- com.game.states.GameManager
+com/game/states/MenuState.java
+ com.game.states.MenuState
 com/game/states/GameState.java
  com.game.states.GameState
-com/game/states/StartState.java
- com.game.states.StartState
+com/game/views/MenuView.java
+ com.game.views.MenuView
 com/game/gameObjects/Button.java
  com.game.gameObjects.Button
 com/game/gameObjects/DebugButton.java
@@ -55,11 +55,11 @@ com/game/states/PauseState.java
  com.game.states.PauseState
 com/game/gameObjects/GameObject.java
  com.game.gameObjects.GameObject
-com/game/states/MenuState.java
- com.game.states.MenuState
-com/game/Gui.java
- com.game.Gui
 com/game/util/MouseHandler.java
  com.game.util.MouseHandler
-com/game/gameObjects/Entity.java
- com.game.gameObjects.Entity
+com/game/Gui.java
+ com.game.Gui
+com/game/states/GameManager.java
+ com.game.states.GameManager
+com/game/states/StartState.java
+ com.game.states.StartState

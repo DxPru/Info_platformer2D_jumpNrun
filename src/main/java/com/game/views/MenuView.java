@@ -13,8 +13,5 @@ public class MenuView extends View{
     public void render(Graphics2D g, int frame, ArrayList<RenderedImage> renderedImages) {
         g.drawImage(AssetPool.getSpriteSheet("res/images/LoadingScreen.png").getSprite(0,0).getImg(), 0, 0, Settings.PX_WIDTH, Settings.PX_HEIGHT, null);
         renderer.render(g, renderedImages);
-        g.setColor(Color.lightGray);
-        g.setFont(new Font("Hack", Font.PLAIN, 24));
-        g.drawString("Exit with ESC (Voruebergehend)", Settings.PX_WIDTH - 550 , Settings.PX_HEIGHT - 375);
     }
 }
