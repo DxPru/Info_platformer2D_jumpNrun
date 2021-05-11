@@ -20,8 +20,8 @@ com/game/gameObjects/Entity.java
  com.game.gameObjects.Entity
 com/game/graphics/Sprite.java
  com.game.graphics.Sprite
-com/game/util/DataManager.java
- com.game.util.DataManager
+com/game/states/StartState.java
+ com.game.states.StartState
 com/game/graphics/Renderer.java
  com.game.graphics.Renderer
 com/game/util/RenderedImage.java
@@ -61,5 +61,11 @@ com/game/Gui.java
  com.game.Gui
 com/game/states/GameManager.java
  com.game.states.GameManager
-com/game/states/StartState.java
- com.game.states.StartState
+com/game/util/data/DataManager.java
+ com.game.util.data.DataManager
+com/game/util/data/Knot.java
+ com.game.util.data.Knot
+com/game/util/data/List.java
+ com.game.util.data.List
+com/game/util/data/PlayerData.java
+ com.game.util.data.PlayerData

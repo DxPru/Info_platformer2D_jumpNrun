@@ -14,7 +14,7 @@ public class Texture {
     public void init(String filepath) {
         this.filepath = filepath;
         
-        try{
+        try {
             img = ImageIO.read(Objects.requireNonNull(new File(filepath)));
         } catch (IOException e) {
             System.out.println("ERROR: could not load file: " + filepath);

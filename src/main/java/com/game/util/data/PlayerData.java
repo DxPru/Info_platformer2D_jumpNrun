@@ -7,10 +7,12 @@ public class PlayerData {
     public PlayerData(String n) {
         name = n;
     }
+    
     public PlayerData(String n, int highScore) {
         name = n;
         this.highScore = highScore;
     }
+    
     public boolean equals(String key) {
         return key.equals(name);
     }

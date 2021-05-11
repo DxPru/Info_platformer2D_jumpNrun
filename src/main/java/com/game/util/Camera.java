@@ -8,11 +8,12 @@ package com.game.util;
 import com.game.util.math.Vector2f;
 
 public class Camera {
-    private static Vector2f position = new Vector2f(); // position of the Camera (Middle of the screen)
     private static final Vector2f PROJECTION_SIZE = new Vector2f(Settings.WIDTH, Settings.HEIGHT);
+    private static Vector2f position = new Vector2f(); // position of the Camera (Middle of the screen)
     private static Vector2f[] projection = new Vector2f[2];
     
-    public Camera() {}
+    public Camera() {
+    }
     
     public Camera(float x, float y) {
         position.x = x;

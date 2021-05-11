@@ -31,11 +31,11 @@ public class MenuState extends GameState {
         int buttonWidth = 64;
         int buttonHeight = 32;
         String ButtonPath = "res/images/Button.png";
-        AssetPool.addSpriteSheet(ButtonPath,new SpriteSheet(AssetPool.getTexture(ButtonPath),buttonWidth, buttonHeight));
-        buttons[0] = new DebugButton(new Vector2f((float) ((Settings.WIDTH / 2) - buttonWidth / 2), 20),ButtonPath, 0); //Play button
+        AssetPool.addSpriteSheet(ButtonPath, new SpriteSheet(AssetPool.getTexture(ButtonPath), buttonWidth, buttonHeight));
+        buttons[0] = new DebugButton(new Vector2f((float) ((Settings.WIDTH / 2) - buttonWidth / 2), 20), ButtonPath, 0); //Play button
         buttons[0].setFocused(true);
-        buttons[1] = new DebugButton(new Vector2f((float) ((Settings.WIDTH / 2) - buttonWidth / 2), 60),ButtonPath, 2); //Username button
-        buttons[2] = new ExitButton(new Vector2f((float) ((Settings.WIDTH) - buttonWidth) - 12, 100),ButtonPath, 1); //Exit button
+        buttons[1] = new DebugButton(new Vector2f((float) ((Settings.WIDTH / 2) - buttonWidth / 2), 60), ButtonPath, 2); //Username button
+        buttons[2] = new ExitButton(new Vector2f((float) ((Settings.WIDTH) - buttonWidth) - 12, 100), ButtonPath, 1); //Exit button
     }
     
     @Override

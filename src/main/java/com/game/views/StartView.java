@@ -16,6 +16,6 @@ public class StartView extends View {
     
     @Override
     public void render(Graphics2D g, int frame, ArrayList<RenderedImage> renderedImages) {
-        g.drawImage(AssetPool.getSpriteSheet("res/images/LoadingScreen.png").getSprite(1, frame).getImg(), 0,0,Settings.PX_WIDTH, Settings.PX_HEIGHT, null);
+        g.drawImage(AssetPool.getSpriteSheet("res/images/LoadingScreen.png").getSprite(1, frame).getImg(), 0, 0, Settings.PX_WIDTH, Settings.PX_HEIGHT, null);
     }
 }

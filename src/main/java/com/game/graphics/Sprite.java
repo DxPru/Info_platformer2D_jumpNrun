@@ -10,7 +10,7 @@ public class Sprite {
     private Texture texture = null;
     private Vector2f texCoords = new Vector2f();
     private BufferedImage img;
-
+    
     public Texture getTexture() {
         return texture;
     }
@@ -48,7 +48,7 @@ public class Sprite {
     }
     
     private void genImage() {
-        if(width != 0 && height != 0 && texture != null) {
+        if (width != 0 && height != 0 && texture != null) {
             // System.out.println(texCoords.x + " | " + texCoords.y + " | " + width + " | " + height);
             this.img = texture.getImg().getSubimage((int) this.texCoords.x, (int) this.texCoords.y, (int) this.width, (int) this.height);
         }

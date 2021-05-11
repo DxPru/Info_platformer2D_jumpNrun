@@ -2,9 +2,6 @@ package com.game.graphics;
 
 import com.game.util.math.Vector2f;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class SpriteSheet {
     
     private Texture texture;
@@ -42,7 +39,7 @@ public class SpriteSheet {
     }
     
     public Sprite getSprite(Vector2f pos) {
-        return this.sprites[(int)pos.y][(int)pos.x];
+        return this.sprites[(int) pos.y][(int) pos.x];
     }
     
     public int getHeight() {

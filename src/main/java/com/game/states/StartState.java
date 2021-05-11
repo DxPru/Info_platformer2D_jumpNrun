@@ -27,7 +27,7 @@ public class StartState extends GameState {
             timeLeft -= (int) dt;
         }
         if (timeLeft <= 0 && frame < 3) {
-            frame ++;
+            frame++;
             timeLeft = 600;
         } else if (frame >= 3 && timeLeft <= 0) {
             gamemanager.addAndPop(Settings.MENU);
@@ -36,7 +36,7 @@ public class StartState extends GameState {
     
     @Override
     public void input(MouseHandler mouse, KeyHandler key) {
-
+    
     }
     
     @Override

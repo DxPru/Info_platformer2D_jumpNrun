@@ -9,7 +9,8 @@ import java.util.ArrayList;
 public abstract class View {
     protected Renderer renderer = new Renderer();
     
-    public View() {}
+    public View() {
+    }
     
     public abstract void render(Graphics2D g, int frame, ArrayList<RenderedImage> renderedImages);
 }

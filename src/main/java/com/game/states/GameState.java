@@ -6,9 +6,9 @@ import com.game.util.MouseHandler;
 import java.awt.*;
 
 public abstract class GameState {
-
-    public GameState(GameManager gamemanager){
-
+    
+    public GameState(GameManager gamemanager) {
+    
     }
     
     public abstract void update(float dt);

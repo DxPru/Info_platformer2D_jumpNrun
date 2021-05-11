@@ -9,41 +9,6 @@ import java.util.List;
 
 public class KeyHandler implements KeyListener {
     public static List<Key> keys = new ArrayList<Key>();
-    
-    public class Key {
-        public int presses, absorbs;
-        public boolean down, clicked;
-        
-        public Key() {
-            keys.add(this);
-        }
-        
-        public void toggle(boolean pressed) {
-            if (pressed != down) {
-                down = pressed;
-            }
-            if (pressed) {
-                presses ++;
-            }
-        }
-        
-        public void tick(){
-            if (absorbs < presses) {
-                absorbs ++;
-                clicked = true;
-            } else {
-                clicked = false;
-            }
-        }
-        
-        public void reset(){
-            down = false;
-            clicked = false;
-            absorbs = 0;
-            presses = 0;
-        }
-    }
-    
     public Key up = new Key();
     public Key down = new Key();
     public Key left = new Key();
@@ -52,7 +17,6 @@ public class KeyHandler implements KeyListener {
     public Key menu = new Key();
     public Key enter = new Key();
     public Key escape = new Key();
-    
     public KeyHandler(GamePanel game) {
         game.addKeyListener(this);
     }
@@ -92,5 +56,39 @@ public class KeyHandler implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
         toggle(e, false);
+    }
+    
+    public class Key {
+        public int presses, absorbs;
+        public boolean down, clicked;
+        
+        public Key() {
+            keys.add(this);
+        }
+        
+        public void toggle(boolean pressed) {
+            if (pressed != down) {
+                down = pressed;
+            }
+            if (pressed) {
+                presses++;
+            }
+        }
+        
+        public void tick() {
+            if (absorbs < presses) {
+                absorbs++;
+                clicked = true;
+            } else {
+                clicked = false;
+            }
+        }
+        
+        public void reset() {
+            down = false;
+            clicked = false;
+            absorbs = 0;
+            presses = 0;
+        }
     }
 }

@@ -18,7 +18,9 @@ public abstract class GameObject {
     }
     
     public abstract void update(float dt);
+    
     public abstract void input(MouseHandler mouse, KeyHandler keyboard);
+    
     public abstract RenderedImage getRenderedImage();
     
     public boolean getRenderFlag() {

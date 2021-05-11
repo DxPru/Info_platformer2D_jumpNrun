@@ -33,8 +33,9 @@ public class GamePanel extends JPanel implements Runnable {
     private KeyHandler key;
     
     private GameManager gamemanager;
+    
     // Setting up the JPanel (new Window)
-    public GamePanel (int width, int height) {
+    public GamePanel(int width, int height) {
         GamePanel.width = width;
         GamePanel.height = height;
         setPreferredSize(new Dimension(width, height));
@@ -47,7 +48,7 @@ public class GamePanel extends JPanel implements Runnable {
     @Override
     public void addNotify() {
         super.addNotify();
-    
+        
         if (thread == null) {
             thread = new Thread(this, "GameThread");
             thread.start();
@@ -75,38 +76,38 @@ public class GamePanel extends JPanel implements Runnable {
         // Variables for the Game loop timing
         final double GAME_HERTZ = Settings.GAME_HERTZ;
         final double TRU = 1000000000 / GAME_HERTZ; // Time Before Update
-    
-        final  int MUBR = 5; // Must Update Before Render
-    
+        
+        final int MUBR = 5; // Must Update Before Render
+        
         double lastUpdateTime = System.nanoTime();
         double lastRenderTime;
         double lastUpdate = System.nanoTime();
-    
+        
         final double GAME_FPS = Settings.GAME_FPS;
         final double TTBR = 1000000000 / GAME_FPS; // Total Time Before Render
-    
+        
         int frameCount = 0;
         int lastSecondTime = (int) (lastUpdateTime / 1000000000);
         oldFrameCount = 0;
-    
+        
         tickCount = 0;
         oldTickCount = 0;
-    
-        while (running){
         
+        while (running) {
+            
             // Querying inputs && updating the Game (tick)
             
             double now = System.nanoTime();
             int updateCount = 0;
-            while (((now - lastUpdateTime) > TRU) && (updateCount < MUBR)){
-                update((float) (System.currentTimeMillis() - lastUpdate) );
+            while (((now - lastUpdateTime) > TRU) && (updateCount < MUBR)) {
+                update((float) (System.currentTimeMillis() - lastUpdate));
                 input(mouse, key);
                 lastUpdate = System.currentTimeMillis();
                 lastUpdateTime += TRU;
-                updateCount ++;
-                tickCount ++;
+                updateCount++;
+                tickCount++;
             }
-        
+            
             if (now - lastUpdateTime > TRU) {
                 lastUpdateTime = now - TRU;
             }
@@ -116,60 +117,60 @@ public class GamePanel extends JPanel implements Runnable {
             render();
             draw();
             lastRenderTime = now;
-            frameCount ++;
-        
+            frameCount++;
+            
             int thisSecond = (int) (lastUpdateTime / 1000000000);
             if (thisSecond > lastSecondTime) {
                 if (frameCount != oldFrameCount) {
                     System.out.println("New SECOND: " + thisSecond + " | " + frameCount);
                     oldFrameCount = frameCount;
                 }
-            
+                
                 if (tickCount != oldTickCount) {
                     System.out.println("New SECOND (T): " + thisSecond + " | " + tickCount);
                     oldTickCount = tickCount;
                 }
-            
+                
                 tickCount = 0;
                 frameCount = 0;
                 lastSecondTime = thisSecond;
             }
-        
-            // sleeping until next update
-            while (now - lastRenderTime < TTBR && now - lastUpdateTime < TRU){
-                Thread.yield();
             
+            // sleeping until next update
+            while (now - lastRenderTime < TTBR && now - lastUpdateTime < TRU) {
+                Thread.yield();
+                
                 try {
                     Thread.sleep(1);
-                } catch (Exception e){
+                } catch (Exception e) {
                     System.out.println("ERROR: yielding Thread"); // failed to pause Thread
                 }
-            
+                
                 now = System.nanoTime();
             }
         }
     }
     
-    public void update(float dt){
+    public void update(float dt) {
         this.gamemanager.update(dt);
     }
     
-    public void input(MouseHandler mouse, KeyHandler key){
+    public void input(MouseHandler mouse, KeyHandler key) {
         key.tick();
         this.gamemanager.input(mouse, key);
     }
     
-    public void render(){
-        if(g != null){
+    public void render() {
+        if (g != null) {
             g.setColor(new Color(66, 134, 244));
             g.fillRect(0, 0, width, height);
             this.gamemanager.render(g);
         }
     }
     
-    public void draw(){
+    public void draw() {
         Graphics g2 = (Graphics) this.getGraphics();
-        g2.drawImage(img, 0, 0 , width, height, null);
+        g2.drawImage(img, 0, 0, width, height, null);
         g2.dispose();
     }
 }
