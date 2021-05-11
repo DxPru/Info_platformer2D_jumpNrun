@@ -16,7 +16,7 @@ public class PlayState extends GameState {
     }
     
     @Override
-    public void input(MouseHandler mouse, KeyHandler keyboard) {
+    public void input(MouseHandler mouse, KeyHandler key) {
     
     }
     

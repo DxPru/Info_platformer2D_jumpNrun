@@ -152,12 +152,12 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
     
-    // TODO Temporary exit because of fullscreen should be then in the appropriate GameState
     public void update(float dt){
         this.gamemanager.update(dt);
     }
     
     public void input(MouseHandler mouse, KeyHandler key){
+        key.tick();
         this.gamemanager.input(mouse, key);
     }
     

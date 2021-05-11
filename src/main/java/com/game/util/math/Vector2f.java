@@ -14,6 +14,11 @@ public class Vector2f {
         this.y = y;
     }
     
+    public Vector2f(Vector2f v2f) {
+        this.x = v2f.x;
+        this.y = v2f.y;
+    }
+    
     public Vector2f add(Vector2f v2f) {
         this.x += v2f.x;
         this.y += v2f.y;
@@ -32,6 +37,12 @@ public class Vector2f {
         this.x = (this.y * v2f.x) - (this.x * v2f.y);
         this.y = (this.x * v2f.y) - (this.y * v2f.x);
         
+        return this;
+    }
+    
+    public Vector2f mul(float multiplier) {
+        this.x = this.x * multiplier;
+        this.y = this.y * multiplier;
         return this;
     }
 }

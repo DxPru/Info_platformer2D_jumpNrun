@@ -9,7 +9,7 @@ import com.game.util.math.Vector2f;
 
 public class Camera {
     private static Vector2f position = new Vector2f(); // position of the Camera (Middle of the screen)
-    private static final Vector2f PROJECTION_SIZE = new Vector2f(Settings.TILE_SIZE * Settings.X_TILECOUNT, Settings.TILE_SIZE * Settings.Y_TILECOUNT);
+    private static final Vector2f PROJECTION_SIZE = new Vector2f(Settings.WIDTH, Settings.HEIGHT);
     private static Vector2f[] projection = new Vector2f[2];
     
     public Camera() {}
@@ -23,8 +23,8 @@ public class Camera {
     
     public static void updateProjection() {
         // moves the projection Vectors to the upper right corner and the lower left corner
-        projection[0] = new Vector2f(position.x - (PROJECTION_SIZE.x / 2), position.y - (PROJECTION_SIZE.y / 2));
-        projection[1] = new Vector2f(position.x + (PROJECTION_SIZE.x / 2), position.y + (PROJECTION_SIZE.y / 2));
+        projection[0] = new Vector2f(position);
+        projection[1] = new Vector2f(position).add(PROJECTION_SIZE);
     }
     
     public static void movePosition(float x, float y) {
@@ -46,5 +46,10 @@ public class Camera {
     
     public static Vector2f[] getProjection() {
         return projection;
+    }
+    
+    public static Vector2f getAbsPos(Vector2f pos) {
+        // translates World Coordinates to screen coordinates
+        return new Vector2f(pos).sub(projection[0]).mul(Settings.SCALE);
     }
 }

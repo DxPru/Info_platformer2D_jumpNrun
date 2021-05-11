@@ -10,7 +10,7 @@ public class Gui extends JFrame {
         setTitle("2D Platformer");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setContentPane(new GamePanel(Settings.WIDTH, Settings.HEIGHT, this));
+        setContentPane(new GamePanel(Settings.PX_WIDTH, Settings.PX_HEIGHT, this));
     
         pack();
         setResizable(false);

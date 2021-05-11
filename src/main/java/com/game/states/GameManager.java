@@ -62,9 +62,9 @@ public class GameManager {
         }
     }
     
-    public void input(MouseHandler mouse, KeyHandler keyboard) {
+    public void input(MouseHandler mouse, KeyHandler key) {
         for (GameState state : states) {
-            state.input(mouse, keyboard);
+            state.input(mouse, key);
         }
     }
     

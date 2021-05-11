@@ -49,12 +49,16 @@ public class Sprite {
     
     private void genImage() {
         if(width != 0 && height != 0 && texture != null) {
-            System.out.println(texCoords.x + " | " + texCoords.y + " | " + width + " | " + height);
+            // System.out.println(texCoords.x + " | " + texCoords.y + " | " + width + " | " + height);
             this.img = texture.getImg().getSubimage((int) this.texCoords.x, (int) this.texCoords.y, (int) this.width, (int) this.height);
         }
     }
     
     public BufferedImage getImg() {
         return this.img;
+    }
+    
+    public Vector2f getSize() {
+        return new Vector2f(width, height);
     }
 }

@@ -7,6 +7,7 @@ import com.game.views.StartView;
 import com.game.views.View;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class StartState extends GameState {
     private View renderer;
@@ -34,12 +35,12 @@ public class StartState extends GameState {
     }
     
     @Override
-    public void input(MouseHandler mouse, KeyHandler keyboard) {
+    public void input(MouseHandler mouse, KeyHandler key) {
 
     }
     
     @Override
     public void render(Graphics2D g) {
-        renderer.render(g, frame);
+        renderer.render(g, frame, new ArrayList<>());
     }
 }

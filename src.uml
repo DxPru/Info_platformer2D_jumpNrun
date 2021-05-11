@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/Dominik/IdeaProjects/Info_platformer2D_jumpNrun/src</OriginalElement>
+  <nodes>
+    <node x="1210.8109817495279" y="947.0">com.game.states.GameManager</node>
+    <node x="0.0" y="221.5">com.game.util.MouseHandler</node>
+    <node x="1543.8347440738405" y="676.5">com.game.states.StartState</node>
+    <node x="1307.2930774071738" y="1485.0">com.game.Gui</node>
+    <node x="2263.68474407384" y="665.5">com.game.graphics.Sprite</node>
+    <node x="2050.8347440738407" y="436.0">com.game.util.math.Vector2f</node>
+    <node x="242.80141074050698" y="0.0">com.game.util.KeyHandler.Key</node>
+    <node x="2246.060981749528" y="990.5">com.game.graphics.SpriteSheet</node>
+    <node x="284.6783668974191" y="447.0">com.game.states.GameState</node>
+    <node x="438.8347440738405" y="676.5">com.game.states.MenuState</node>
+    <node x="1819.8347440738405" y="643.0">com.game.util.Camera</node>
+    <node x="218.0" y="155.0">com.game.util.KeyHandler</node>
+    <node x="157.0" y="1738.0">com.game.graphics.Draw</node>
+    <node x="0.0" y="1738.0">com.game.graphics.Renderer</node>
+    <node x="714.8347440738405" y="676.5">com.game.states.GameOverState</node>
+    <node x="117.83333333333348" y="1200.0">com.game.GamePanel</node>
+    <node x="2397.185981749528" y="446.5">com.game.graphics.Texture</node>
+    <node x="2295.185981749528" y="1244.0">com.game.util.AssetPool</node>
+    <node x="1287.2930774071738" y="1614.0">com.game.GameLauncher</node>
+    <node x="2020.3450335640857" y="221.5">com.game.util.Settings</node>
+    <node x="1673.4359817495279" y="210.0">com.game.views.View</node>
+    <node x="1717.6859817495279" y="469.0">com.game.views.StartView</node>
+    <node x="990.8347440738405" y="676.5">com.game.states.PauseState</node>
+    <node x="1266.8347440738405" y="676.5">com.game.states.PlayState</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.game.graphics.SpriteSheet" target="com.game.graphics.Texture" relationship="TO_ONE">
+      <point x="119.0000182504723" y="0.0" />
+      <point x="2522.0" y="1041.5" />
+      <point x="2522.0" y="723.0" />
+      <point x="2462.686" y="723.0" />
+      <point x="1.8250472294312203E-5" y="62.0" />
+    </edge>
+    <edge source="com.game.GamePanel" target="com.game.Gui" relationship="TO_ONE">
+      <point x="-30.000333333333487" y="-105.5" />
+      <point x="215.833" y="1184.0" />
+      <point x="1454.793" y="1184.0" />
+      <point x="1454.793" y="1524.5" />
+      <point x="54.999922592826124" y="0.0" />
+    </edge>
+    <edge source="com.game.graphics.Sprite" target="com.game.graphics.Texture" relationship="TO_ONE">
+      <point x="79.00025592615975" y="0.0" />
+      <point x="2522.0" y="738.0" />
+      <point x="2522.0" y="723.0" />
+      <point x="2462.686" y="723.0" />
+      <point x="1.8250472294312203E-5" y="62.0" />
+    </edge>
+    <edge source="com.game.graphics.SpriteSheet" target="com.game.util.math.Vector2f" relationship="CREATE">
+      <point x="-118.9999817495277" y="0.0" />
+      <point x="2153.0" y="1041.5" />
+      <point x="2153.0" y="690.0" />
+      <point x="2242.0" y="690.0" />
+      <point x="2242.0" y="508.5" />
+      <point x="84.5002559261593" y="0.0" />
+    </edge>
+    <edge source="com.game.states.MenuState" target="com.game.states.GameManager" relationship="DEPENDENCY">
+      <point x="2.5592615952518827E-4" y="61.5" />
+      <point x="566.835" y="832.0" />
+      <point x="1338.811" y="832.0" />
+      <point x="1.8250472066938528E-5" y="-94.5" />
+    </edge>
+    <edge source="com.game.util.AssetPool" target="com.game.graphics.SpriteSheet" relationship="TO_MANY">
+      <point x="-59.125" y="-61.5" />
+      <point x="0.0" y="51.0" />
+    </edge>
+    <edge source="com.game.graphics.SpriteSheet" target="com.game.graphics.Sprite" relationship="CREATE">
+      <point x="0.0" y="-51.0" />
+      <point x="22.376237675687662" y="72.5" />
+    </edge>
+    <edge source="com.game.util.KeyHandler.Key" target="com.game.util.KeyHandler" relationship="INNER_CLASS">
+      <point x="-15.000410740506993" y="50.5" />
+      <point x="-17.199000000000012" y="-94.5" />
+    </edge>
+    <edge source="com.game.states.GameManager" target="com.game.Gui" relationship="DEPENDENCY">
+      <point x="38.48201825047204" y="94.5" />
+      <point x="1377.293" y="1306.0" />
+      <point x="1392.293" y="1306.0" />
+      <point x="29.999922592826124" y="-39.5" />
+    </edge>
+    <edge source="com.game.GamePanel" target="com.game.states.GameManager" relationship="TO_ONE">
+      <point x="-45.00033333333349" y="-105.5" />
+      <point x="200.833" y="1152.0" />
+      <point x="1323.811" y="1152.0" />
+      <point x="-14.999981749527933" y="94.5" />
+    </edge>
+    <edge source="com.game.util.AssetPool" target="com.game.graphics.Texture" relationship="CREATE">
+      <point x="-14.999981749527706" y="-61.5" />
+      <point x="2409.186" y="1110.0" />
+      <point x="2504.0" y="1110.0" />
+      <point x="2504.0" y="907.5" />
+      <point x="2570.686" y="907.5" />
+      <point x="2570.686" y="508.5" />
+      <point x="65.5000182504723" y="0.0" />
+    </edge>
+    <edge source="com.game.graphics.Sprite" target="com.game.util.math.Vector2f" relationship="CREATE">
+      <point x="-78.99974407384025" y="0.0" />
+      <point x="2242.0" y="738.0" />
+      <point x="2242.0" y="508.5" />
+      <point x="84.5002559261593" y="0.0" />
+    </edge>
+    <edge source="com.game.util.KeyHandler" target="com.game.GamePanel" relationship="DEPENDENCY">
+      <point x="0.0" y="94.5" />
+      <point x="325.0" y="396.0" />
+      <point x="69.0" y="396.0" />
+      <point x="69.0" y="1448.0" />
+      <point x="245.833" y="1448.0" />
+      <point x="-3.333333334865074E-4" y="105.5" />
+    </edge>
+    <edge source="com.game.states.PauseState" target="com.game.states.GameState" relationship="GENERALIZATION">
+      <point x="15.000255926159525" y="-61.5" />
+      <point x="1133.835" y="607.0" />
+      <point x="397.678" y="607.0" />
+      <point x="-15.000366897419099" y="61.5" />
+    </edge>
+    <edge source="com.game.states.PlayState" target="com.game.util.MouseHandler" relationship="DEPENDENCY">
+      <point x="-14.999744073840475" y="-61.5" />
+      <point x="1379.835" y="661.0" />
+      <point x="99.0" y="661.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="com.game.states.GameManager" target="com.game.states.GameOverState" relationship="CREATE">
+      <point x="-128.0" y="-45.0" />
+      <point x="827.835" y="996.5" />
+      <point x="-14.999744073840475" y="61.5" />
+    </edge>
+    <edge source="com.game.states.GameOverState" target="com.game.util.MouseHandler" relationship="DEPENDENCY">
+      <point x="-14.999744073840475" y="-61.5" />
+      <point x="827.835" y="661.0" />
+      <point x="99.0" y="661.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="com.game.util.MouseHandler" target="com.game.GamePanel" relationship="DEPENDENCY">
+      <point x="-15.0" y="28.0" />
+      <point x="84.0" y="396.0" />
+      <point x="69.0" y="396.0" />
+      <point x="69.0" y="1448.0" />
+      <point x="245.833" y="1448.0" />
+      <point x="-3.333333334865074E-4" y="105.5" />
+    </edge>
+    <edge source="com.game.states.PauseState" target="com.game.util.MouseHandler" relationship="DEPENDENCY">
+      <point x="-14.999744073840475" y="-61.5" />
+      <point x="1103.835" y="661.0" />
+      <point x="99.0" y="661.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="com.game.graphics.SpriteSheet" target="com.game.graphics.Sprite" relationship="TO_MANY">
+      <point x="-22.376237675687662" y="-51.0" />
+      <point x="0.0" y="72.5" />
+    </edge>
+    <edge source="com.game.states.PlayState" target="com.game.states.GameState" relationship="GENERALIZATION">
+      <point x="15.000255926159525" y="-61.5" />
+      <point x="1409.835" y="607.0" />
+      <point x="397.678" y="607.0" />
+      <point x="-15.000366897419099" y="61.5" />
+    </edge>
+    <edge source="com.game.states.GameState" target="com.game.util.MouseHandler" relationship="DEPENDENCY">
+      <point x="14.999633102580901" y="61.5" />
+      <point x="427.678" y="661.0" />
+      <point x="99.0" y="661.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="com.game.Gui" target="com.game.GamePanel" relationship="CREATE">
+      <point x="14.999922592826124" y="-39.5" />
+      <point x="1377.293" y="1448.0" />
+      <point x="245.833" y="1448.0" />
+      <point x="-3.333333334865074E-4" y="105.5" />
+    </edge>
+    <edge source="com.game.states.StartState" target="com.game.states.GameManager" relationship="TO_ONE">
+      <point x="15.000255926159525" y="61.5" />
+      <point x="1686.835" y="1152.0" />
+      <point x="1323.811" y="1152.0" />
+      <point x="-14.999981749527933" y="94.5" />
+    </edge>
+    <edge source="com.game.GamePanel" target="com.game.util.MouseHandler" relationship="CREATE">
+      <point x="14.999666666666542" y="-105.5" />
+      <point x="260.833" y="661.0" />
+      <point x="99.0" y="661.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="com.game.states.GameState" target="com.game.util.KeyHandler" relationship="DEPENDENCY">
+      <point x="-3.6689741909867735E-4" y="61.5" />
+      <point x="412.678" y="645.0" />
+      <point x="628.0" y="645.0" />
+      <point x="628.0" y="249.5" />
+      <point x="107.0" y="0.0" />
+    </edge>
+    <edge source="com.game.util.Camera" target="com.game.util.math.Vector2f" relationship="CREATE">
+      <point x="105.00025592615953" y="0.0" />
+      <point x="2153.0" y="738.0" />
+      <point x="2153.0" y="690.0" />
+      <point x="2242.0" y="690.0" />
+      <point x="2242.0" y="508.5" />
+      <point x="84.5002559261593" y="0.0" />
+    </edge>
+    <edge source="com.game.states.GameManager" target="com.game.states.GameState" relationship="DEPENDENCY">
+      <point x="-128.0" y="15.0" />
+      <point x="185.833" y="1056.5" />
+      <point x="185.833" y="508.5" />
+      <point x="-128.0" y="0.0" />
+    </edge>
+    <edge source="com.game.states.GameManager" target="com.game.util.Camera" relationship="TO_ONE">
+      <point x="128.0" y="15.0" />
+      <point x="1909.835" y="1056.5" />
+      <point x="-14.999744073840475" y="95.0" />
+    </edge>
+    <edge source="com.game.GamePanel" target="com.game.util.Settings" relationship="DEPENDENCY">
+      <point x="29.999666666666542" y="-105.5" />
+      <point x="275.833" y="1168.0" />
+      <point x="215.833" y="1168.0" />
+      <point x="215.833" y="890.0" />
+      <point x="2058.335" y="890.0" />
+      <point x="2058.335" y="607.0" />
+      <point x="2022.335" y="607.0" />
+      <point x="-50.51003356408546" y="28.0" />
+    </edge>
+    <edge source="com.game.util.Camera" target="com.game.util.math.Vector2f" relationship="TO_ONE">
+      <point x="105.00025592615953" y="-15.0" />
+      <point x="2138.0" y="723.0" />
+      <point x="2138.0" y="640.0" />
+      <point x="2135.335" y="640.0" />
+      <point x="2.559261592978146E-4" y="72.5" />
+    </edge>
+    <edge source="com.game.states.GameOverState" target="com.game.util.KeyHandler" relationship="DEPENDENCY">
+      <point x="2.5592615952518827E-4" y="-61.5" />
+      <point x="842.835" y="645.0" />
+      <point x="628.0" y="645.0" />
+      <point x="628.0" y="249.5" />
+      <point x="107.0" y="0.0" />
+    </edge>
+    <edge source="com.game.states.PlayState" target="com.game.util.KeyHandler" relationship="DEPENDENCY">
+      <point x="2.5592615952518827E-4" y="-61.5" />
+      <point x="1394.835" y="645.0" />
+      <point x="628.0" y="645.0" />
+      <point x="628.0" y="249.5" />
+      <point x="107.0" y="0.0" />
+    </edge>
+    <edge source="com.game.states.GameManager" target="com.game.util.Camera" relationship="CREATE">
+      <point x="128.0" y="30.0" />
+      <point x="1939.835" y="1071.5" />
+      <point x="15.000255926159525" y="95.0" />
+    </edge>
+    <edge source="com.game.util.Camera" target="com.game.util.math.Vector2f" relationship="TO_MANY">
+      <point x="105.00025592615953" y="-15.0" />
+      <point x="2138.0" y="723.0" />
+      <point x="2138.0" y="640.0" />
+      <point x="2135.335" y="640.0" />
+      <point x="2.559261592978146E-4" y="72.5" />
+    </edge>
+    <edge source="com.game.states.StartState" target="com.game.views.StartView" relationship="TO_ONE">
+      <point x="90.50025592615953" y="-61.5" />
+      <point x="-43.85098174952782" y="39.5" />
+    </edge>
+    <edge source="com.game.states.GameManager" target="com.game.util.KeyHandler" relationship="DEPENDENCY">
+      <point x="-127.99998174952793" y="0.0" />
+      <point x="366.333" y="1041.5" />
+      <point x="366.333" y="645.0" />
+      <point x="628.0" y="645.0" />
+      <point x="628.0" y="249.5" />
+      <point x="107.0" y="0.0" />
+    </edge>
+    <edge source="com.game.states.StartState" target="com.game.states.GameState" relationship="GENERALIZATION">
+      <point x="15.000255926159525" y="-61.5" />
+      <point x="1686.835" y="607.0" />
+      <point x="397.678" y="607.0" />
+      <point x="-15.000366897419099" y="61.5" />
+    </edge>
+    <edge source="com.game.util.AssetPool" target="com.game.graphics.SpriteSheet" relationship="DEPENDENCY">
+      <point x="-44.125" y="-61.5" />
+      <point x="15.0" y="51.0" />
+    </edge>
+    <edge source="com.game.GameLauncher" target="com.game.Gui" relationship="CREATE">
+      <point x="72.49992259282612" y="-39.5" />
+      <point x="1434.793" y="1306.0" />
+      <point x="1392.293" y="1306.0" />
+      <point x="29.999922592826124" y="-39.5" />
+    </edge>
+    <edge source="com.game.GamePanel" target="com.game.util.KeyHandler" relationship="CREATE">
+      <point x="-3.333333334865074E-4" y="-105.5" />
+      <point x="245.833" y="645.0" />
+      <point x="628.0" y="645.0" />
+      <point x="628.0" y="249.5" />
+      <point x="107.0" y="0.0" />
+    </edge>
+    <edge source="com.game.states.GameManager" target="com.game.states.StartState" relationship="CREATE">
+      <point x="128.0" y="0.0" />
+      <point x="1656.835" y="1041.5" />
+      <point x="-14.999744073840475" y="61.5" />
+    </edge>
+    <edge source="com.game.states.MenuState" target="com.game.util.MouseHandler" relationship="DEPENDENCY">
+      <point x="-14.999744073840475" y="-61.5" />
+      <point x="551.835" y="661.0" />
+      <point x="99.0" y="661.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="com.game.util.KeyHandler" target="com.game.util.KeyHandler.Key" relationship="CREATE">
+      <point x="15.0" y="-94.5" />
+      <point x="17.19858925949302" y="50.5" />
+    </edge>
+    <edge source="com.game.states.GameManager" target="com.game.util.Settings" relationship="DEPENDENCY">
+      <point x="1.8250472066938528E-5" y="94.5" />
+      <point x="1338.811" y="1168.0" />
+      <point x="215.833" y="1168.0" />
+      <point x="215.833" y="890.0" />
+      <point x="2058.335" y="890.0" />
+      <point x="2058.335" y="607.0" />
+      <point x="2022.335" y="607.0" />
+      <point x="-50.51003356408546" y="28.0" />
+    </edge>
+    <edge source="com.game.states.GameOverState" target="com.game.states.GameState" relationship="GENERALIZATION">
+      <point x="15.000255926159525" y="-61.5" />
+      <point x="857.835" y="607.0" />
+      <point x="397.678" y="607.0" />
+      <point x="-15.000366897419099" y="61.5" />
+    </edge>
+    <edge source="com.game.states.MenuState" target="com.game.util.KeyHandler" relationship="DEPENDENCY">
+      <point x="2.5592615952518827E-4" y="-61.5" />
+      <point x="566.835" y="645.0" />
+      <point x="628.0" y="645.0" />
+      <point x="628.0" y="249.5" />
+      <point x="107.0" y="0.0" />
+    </edge>
+    <edge source="com.game.states.GameManager" target="com.game.states.PlayState" relationship="CREATE">
+      <point x="-14.999981749527933" y="-94.5" />
+      <point x="-71.02374407384059" y="61.5" />
+    </edge>
+    <edge source="com.game.GamePanel" target="com.game.Gui" relationship="DEPENDENCY">
+      <point x="127.99966666666654" y="20.0" />
+      <point x="943.0" y="1325.5" />
+      <point x="943.0" y="1306.0" />
+      <point x="1392.293" y="1306.0" />
+      <point x="29.999922592826124" y="-39.5" />
+    </edge>
+    <edge source="com.game.GamePanel" target="com.game.util.MouseHandler" relationship="TO_ONE">
+      <point x="-120.5" y="-105.5" />
+      <point x="26.333333333333485" y="28.0" />
+    </edge>
+    <edge source="com.game.states.GameManager" target="com.game.states.PauseState" relationship="CREATE">
+      <point x="-120.5" y="-94.5" />
+      <point x="99.47623767568734" y="61.5" />
+    </edge>
+    <edge source="com.game.states.StartState" target="com.game.views.StartView" relationship="CREATE">
+      <point x="105.50025592615953" y="-61.5" />
+      <point x="-28.85098174952782" y="39.5" />
+    </edge>
+    <edge source="com.game.Gui" target="com.game.util.Settings" relationship="DEPENDENCY">
+      <point x="-7.7407173876054E-5" y="-39.5" />
+      <point x="1362.293" y="1168.0" />
+      <point x="215.833" y="1168.0" />
+      <point x="215.833" y="890.0" />
+      <point x="2058.335" y="890.0" />
+      <point x="2058.335" y="607.0" />
+      <point x="2022.335" y="607.0" />
+      <point x="-50.51003356408546" y="28.0" />
+    </edge>
+    <edge source="com.game.GamePanel" target="com.game.util.KeyHandler" relationship="TO_ONE">
+      <point x="-128.0" y="0.0" />
+      <point x="-17.5" y="1305.5" />
+      <point x="-17.5" y="204.0" />
+      <point x="-107.0" y="-45.5" />
+    </edge>
+    <edge source="com.game.util.KeyHandler.Key" target="com.game.util.KeyHandler" relationship="DEPENDENCY">
+      <point x="79.999589259493" y="0.0" />
+      <point x="628.0" y="50.5" />
+      <point x="628.0" y="249.5" />
+      <point x="107.0" y="0.0" />
+    </edge>
+    <edge source="com.game.graphics.SpriteSheet" target="com.game.graphics.Texture" relationship="DEPENDENCY">
+      <point x="119.0000182504723" y="-15.0" />
+      <point x="2504.0" y="1026.5" />
+      <point x="2504.0" y="907.5" />
+      <point x="2570.686" y="907.5" />
+      <point x="2570.686" y="508.5" />
+      <point x="65.5000182504723" y="0.0" />
+    </edge>
+    <edge source="com.game.views.StartView" target="com.game.util.Settings" relationship="DEPENDENCY">
+      <point x="-13.850981749527818" y="39.5" />
+      <point x="1792.335" y="607.0" />
+      <point x="2022.335" y="607.0" />
+      <point x="-50.51003356408546" y="28.0" />
+    </edge>
+    <edge source="com.game.states.PauseState" target="com.game.states.GameManager" relationship="DEPENDENCY">
+      <point x="2.5592615952518827E-4" y="61.5" />
+      <point x="1118.835" y="832.0" />
+      <point x="1338.811" y="832.0" />
+      <point x="1.8250472066938528E-5" y="-94.5" />
+    </edge>
+    <edge source="com.game.util.KeyHandler" target="com.game.util.KeyHandler.Key" relationship="TO_MANY">
+      <point x="0.0" y="-94.5" />
+      <point x="325.0" y="128.0" />
+      <point x="322.801" y="128.0" />
+      <point x="-4.107405069930792E-4" y="50.5" />
+    </edge>
+    <edge source="com.game.states.PlayState" target="com.game.states.GameManager" relationship="DEPENDENCY">
+      <point x="2.5592615952518827E-4" y="61.5" />
+      <point x="1394.835" y="832.0" />
+      <point x="1338.811" y="832.0" />
+      <point x="1.8250472066938528E-5" y="-94.5" />
+    </edge>
+    <edge source="com.game.states.GameManager" target="com.game.util.MouseHandler" relationship="DEPENDENCY">
+      <point x="-127.99998174952793" y="-15.0" />
+      <point x="421.335" y="1026.5" />
+      <point x="421.335" y="661.0" />
+      <point x="99.0" y="661.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="com.game.GamePanel" target="com.game.states.GameManager" relationship="CREATE">
+      <point x="-15.000333333333487" y="-105.5" />
+      <point x="230.833" y="832.0" />
+      <point x="1338.811" y="832.0" />
+      <point x="1.8250472066938528E-5" y="-94.5" />
+    </edge>
+    <edge source="com.game.util.KeyHandler" target="com.game.util.KeyHandler.Key" relationship="TO_ONE">
+      <point x="0.0" y="-94.5" />
+      <point x="325.0" y="128.0" />
+      <point x="322.801" y="128.0" />
+      <point x="-4.107405069930792E-4" y="50.5" />
+    </edge>
+    <edge source="com.game.states.PauseState" target="com.game.util.KeyHandler" relationship="DEPENDENCY">
+      <point x="2.5592615952518827E-4" y="-61.5" />
+      <point x="1118.835" y="645.0" />
+      <point x="628.0" y="645.0" />
+      <point x="628.0" y="249.5" />
+      <point x="107.0" y="0.0" />
+    </edge>
+    <edge source="com.game.states.StartState" target="com.game.util.KeyHandler" relationship="DEPENDENCY">
+      <point x="2.5592615952518827E-4" y="-61.5" />
+      <point x="1671.835" y="645.0" />
+      <point x="628.0" y="645.0" />
+      <point x="628.0" y="249.5" />
+      <point x="107.0" y="0.0" />
+    </edge>
+    <edge source="com.game.util.AssetPool" target="com.game.graphics.Texture" relationship="TO_MANY">
+      <point x="1.8250472294312203E-5" y="-61.5" />
+      <point x="2424.186" y="1168.0" />
+      <point x="2522.0" y="1168.0" />
+      <point x="2522.0" y="723.0" />
+      <point x="2462.686" y="723.0" />
+      <point x="1.8250472294312203E-5" y="62.0" />
+    </edge>
+    <edge source="com.game.graphics.Sprite" target="com.game.util.math.Vector2f" relationship="TO_MANY">
+      <point x="2.5592615975256194E-4" y="-72.5" />
+      <point x="2342.685" y="640.0" />
+      <point x="2135.335" y="640.0" />
+      <point x="2.559261592978146E-4" y="72.5" />
+    </edge>
+    <edge source="com.game.util.Camera" target="com.game.util.Settings" relationship="DEPENDENCY">
+      <point x="2.5592615952518827E-4" y="95.0" />
+      <point x="1924.835" y="890.0" />
+      <point x="2058.335" y="890.0" />
+      <point x="2058.335" y="607.0" />
+      <point x="2022.335" y="607.0" />
+      <point x="-50.51003356408546" y="28.0" />
+    </edge>
+    <edge source="com.game.states.GameOverState" target="com.game.states.GameManager" relationship="DEPENDENCY">
+      <point x="2.5592615952518827E-4" y="61.5" />
+      <point x="842.835" y="832.0" />
+      <point x="1338.811" y="832.0" />
+      <point x="1.8250472066938528E-5" y="-94.5" />
+    </edge>
+    <edge source="com.game.states.GameManager" target="com.game.states.GameState" relationship="TO_MANY">
+      <point x="-128.0" y="30.0" />
+      <point x="170.833" y="1071.5" />
+      <point x="170.833" y="493.5" />
+      <point x="-128.0" y="-15.0" />
+    </edge>
+    <edge source="com.game.states.GameManager" target="com.game.Gui" relationship="TO_ONE">
+      <point x="-29.999981749527933" y="94.5" />
+      <point x="1308.811" y="1184.0" />
+      <point x="1454.793" y="1184.0" />
+      <point x="1454.793" y="1524.5" />
+      <point x="54.999922592826124" y="0.0" />
+    </edge>
+    <edge source="com.game.states.StartState" target="com.game.states.GameManager" relationship="DEPENDENCY">
+      <point x="2.5592615952518827E-4" y="61.5" />
+      <point x="1671.835" y="832.0" />
+      <point x="1338.811" y="832.0" />
+      <point x="1.8250472066938528E-5" y="-94.5" />
+    </edge>
+    <edge source="com.game.states.StartState" target="com.game.util.MouseHandler" relationship="DEPENDENCY">
+      <point x="-14.999744073840475" y="-61.5" />
+      <point x="1656.835" y="661.0" />
+      <point x="99.0" y="661.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="com.game.states.MenuState" target="com.game.states.GameState" relationship="GENERALIZATION">
+      <point x="15.000255926159525" y="-61.5" />
+      <point x="581.835" y="607.0" />
+      <point x="397.678" y="607.0" />
+      <point x="-15.000366897419099" y="61.5" />
+    </edge>
+    <edge source="com.game.states.GameManager" target="com.game.states.MenuState" relationship="CREATE">
+      <point x="-128.0" y="-30.0" />
+      <point x="551.835" y="1011.5" />
+      <point x="-14.999744073840475" y="61.5" />
+    </edge>
+    <edge source="com.game.graphics.Sprite" target="com.game.graphics.Texture" relationship="DEPENDENCY">
+      <point x="79.00025592615975" y="15.0" />
+      <point x="2504.0" y="753.0" />
+      <point x="2504.0" y="907.5" />
+      <point x="2570.686" y="907.5" />
+      <point x="2570.686" y="508.5" />
+      <point x="65.5000182504723" y="0.0" />
+    </edge>
+    <edge source="com.game.views.StartView" target="com.game.views.View" relationship="GENERALIZATION">
+      <point x="-44.25" y="-39.5" />
+      <point x="0.0" y="39.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.7724366041896362" showDependencies="true" x="517.9864401941193" y="534.7380816443049" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

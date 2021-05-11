@@ -11,14 +11,14 @@ public class SpriteSheet {
     private Sprite[][] sprites;
     private int width, height;
     
-    public SpriteSheet(Texture texture, int spriteWidth, int spriteHeight, int numHSprites, int numVSprites) {
-        this.width = numVSprites;
-        this.height = numHSprites;
-        this.sprites = new Sprite[numHSprites][numVSprites];
+    public SpriteSheet(Texture texture, int spriteWidth, int spriteHeight) {
+        this.width = texture.getWidth() / spriteWidth;
+        this.height = texture.getHeight() / spriteHeight;
+        this.sprites = new Sprite[this.height][this.width];
         
         this.texture = texture;
-        for (int y = 0; y < numHSprites; y++) {
-            for (int x = 0; x < numVSprites; x++) {
+        for (int y = 0; y < this.height; y++) {
+            for (int x = 0; x < this.width; x++) {
                 Vector2f texCoords = new Vector2f(x * spriteWidth, y * spriteHeight);
                 Sprite sprite = new Sprite();
                 sprite.setTexture(texture);
@@ -39,6 +39,10 @@ public class SpriteSheet {
             return this.sprites[y][x];
         }
         return this.sprites[0][0];
+    }
+    
+    public Sprite getSprite(Vector2f pos) {
+        return this.sprites[(int)pos.y][(int)pos.x];
     }
     
     public int getHeight() {
