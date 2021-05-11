@@ -29,7 +29,7 @@ public class StartState extends GameState {
         if (timeLeft <= 0 && frame < 3) {
             frame ++;
             timeLeft = 600;
-        } else if (frame >= 3 && timeLeft <= -100) {
+        } else if (frame >= 3 && timeLeft <= 0) {
             gamemanager.addAndPop(Settings.MENU);
         }
     }
