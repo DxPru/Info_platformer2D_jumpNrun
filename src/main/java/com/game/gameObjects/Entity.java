@@ -8,7 +8,6 @@ public abstract class Entity extends GameObject {
     protected static final int RIGHT = 1;
     protected static final int LEFT = 2;
     protected static final int JUMP = 3;
-    protected int Currentframe;
     
     protected boolean right = false;
     protected boolean left = false;

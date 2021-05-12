@@ -1,7 +1,6 @@
 package com.game.gameObjects;
 
 import com.game.graphics.Sprite;
-import com.game.util.AssetPool;
 import com.game.util.KeyHandler;
 import com.game.util.MouseHandler;
 import com.game.util.RenderedImage;
@@ -11,11 +10,12 @@ public class Player extends Entity {
     
     public Player(Vector2f pos, String spritePath) {
         super(pos, spritePath);
-        acc = 2.0f;
-        maxSpeed = 3.0f;
+        animation.setDelay(100);
+        acc = 0.01f;
+        maxSpeed = 0.1f;
     }
     
-    public void move(float dt) {
+    private void move(float dt) {
         if (jumping) {
             // TODO initialize jump
         }
@@ -53,11 +53,46 @@ public class Player extends Entity {
         }
     }
     
+    private void setDir() {
+        int dir = animation.getDir();
+        
+        if (!jumping) {
+            if (right) {
+                if (dir != RIGHT) {
+                    animation.setDir(RIGHT);
+                }
+            } else if (left ) {
+                if (dir != LEFT) {
+                    animation.setDir(LEFT);
+                }
+            } else {
+                if (dir != IDLE) {
+                    animation.setDir(IDLE);
+                }
+            }
+        } else {
+            if (right) {
+                if (dir != RIGHT + JUMP) {
+                    animation.setDir(RIGHT + JUMP);
+                }
+            } else if (left ) {
+                if (dir != LEFT + JUMP) {
+                    animation.setDir(LEFT + JUMP);
+                }
+            } else {
+                if (dir != IDLE + JUMP) {
+                    animation.setDir(IDLE + JUMP);
+                }
+            }
+        }
+    }
+    
     @Override
     public void update(float dt) {
+        setDir();
         move(dt);
         animation.update(dt);
-        pos.add(new Vector2f(dx, dy));
+        pos.add(new Vector2f(dx, dy).mul(dt));
     }
     
     @Override
