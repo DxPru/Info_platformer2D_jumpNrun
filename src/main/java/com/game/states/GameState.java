@@ -2,13 +2,15 @@ package com.game.states;
 
 import com.game.util.KeyHandler;
 import com.game.util.MouseHandler;
+import com.game.views.View;
 
 import java.awt.*;
 
 public abstract class GameState {
-    
+    protected GameManager gamemanager;
+    protected View renderer;
     public GameState(GameManager gamemanager) {
-    
+        this.gamemanager = gamemanager;
     }
     
     public abstract void update(float dt);

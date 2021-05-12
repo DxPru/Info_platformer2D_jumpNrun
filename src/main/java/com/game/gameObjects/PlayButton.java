@@ -1,16 +1,16 @@
 package com.game.gameObjects;
 
-import com.game.Gui;
 import com.game.states.GameManager;
+import com.game.util.Settings;
 import com.game.util.math.Vector2f;
 
-public class ExitButton extends Button {
-    public ExitButton(Vector2f pos, String spritePath, int spritePos, GameManager gameManager) {
+public class PlayButton extends Button {
+    public PlayButton(Vector2f pos, String spritePath, int spritePos, GameManager gameManager) {
         super(pos, spritePath, spritePos, gameManager);
     }
     
     @Override
     public void action() {
-        Gui.close();
+        gameManager.addAndPop(Settings.PLAY);
     }
 }

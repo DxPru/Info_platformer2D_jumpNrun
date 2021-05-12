@@ -1,35 +1,34 @@
 package com.game.states;
 
-import com.game.util.KeyHandler;
-import com.game.util.MouseHandler;
-import com.game.util.Settings;
+import com.game.graphics.Animation;
+import com.game.graphics.SpriteSheet;
+import com.game.util.*;
+import com.game.util.math.Vector2f;
 import com.game.views.StartView;
-import com.game.views.View;
 
 import java.awt.*;
 import java.util.ArrayList;
 
 public class StartState extends GameState {
-    private View renderer;
-    private GameManager gamemanager;
-    private int timeLeft = 1000;
-    private int frame = 0;
+    private Animation animation;
     
     public StartState(GameManager gamemanager) {
         super(gamemanager);
-        this.gamemanager = gamemanager;
         renderer = new StartView();
+        init();
+    }
+    
+    public void init() {
+        String filepath = "res/spritesheets/LoadingScreen.png";
+        AssetPool.addSpriteSheet(filepath, new SpriteSheet(AssetPool.getTexture(filepath),256, 144));
+        animation = new Animation(filepath,1);
+        animation.setDelay(600);
     }
     
     @Override
     public void update(float dt) {
-        if ((int) dt >= 0) {
-            timeLeft -= (int) dt;
-        }
-        if (timeLeft <= 0 && frame < 3) {
-            frame++;
-            timeLeft = 600;
-        } else if (frame >= 3 && timeLeft <= 0) {
+        animation.update(dt);
+        if (animation.hasPlayed()) {
             gamemanager.addAndPop(Settings.MENU);
         }
     }
@@ -41,6 +40,8 @@ public class StartState extends GameState {
     
     @Override
     public void render(Graphics2D g) {
-        renderer.render(g, frame, new ArrayList<>());
+        ArrayList<RenderedImage> ri = new ArrayList<RenderedImage>();
+        ri.add(0,new RenderedImage(animation.getSprite().getImg(), new Vector2f(), animation.getSprite().getSize()));
+        renderer.render(g, ri);
     }
 }

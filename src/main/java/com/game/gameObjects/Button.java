@@ -1,6 +1,7 @@
 package com.game.gameObjects;
 
 import com.game.graphics.Sprite;
+import com.game.states.GameManager;
 import com.game.util.AssetPool;
 import com.game.util.KeyHandler;
 import com.game.util.MouseHandler;
@@ -9,13 +10,16 @@ import com.game.util.math.Vector2f;
 
 
 public abstract class Button extends GameObject {
-    private int spriteYPos, spriteXPos;
+    protected GameManager gameManager;
+    private final int spriteYPos;
+    private int spriteXPos;
     private boolean focused;
     
-    public Button(Vector2f pos, String spritePath, int spritePos) {
+    public Button(Vector2f pos, String spritePath, int spritePos, GameManager gameManager) {
         super(pos, spritePath);
         this.spriteYPos = spritePos;
         this.spriteXPos = 0;
+        this.gameManager = gameManager;
     }
     
     @Override

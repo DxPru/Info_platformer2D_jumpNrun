@@ -53,9 +53,11 @@ public class GameManager {
     }
     
     public void update(float dt) {
-        Camera.updateProjection();
-        for (GameState state : states) {
-            state.update(dt);
+        if (dt >= 0) {
+            Camera.updateProjection();
+            for (GameState state : states) {
+                state.update(dt);
+            }
         }
     }
     

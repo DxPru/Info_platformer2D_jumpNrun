@@ -12,5 +12,5 @@ public abstract class View {
     public View() {
     }
     
-    public abstract void render(Graphics2D g, int frame, ArrayList<RenderedImage> renderedImages);
+    public abstract void render(Graphics2D g, ArrayList<RenderedImage> renderedImages);
 }

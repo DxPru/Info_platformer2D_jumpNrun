@@ -3,24 +3,22 @@ package com.game.states;
 import com.game.gameObjects.Button;
 import com.game.gameObjects.DebugButton;
 import com.game.gameObjects.ExitButton;
+import com.game.gameObjects.PlayButton;
+import com.game.graphics.Sprite;
 import com.game.graphics.SpriteSheet;
 import com.game.util.*;
 import com.game.util.math.Vector2f;
 import com.game.views.MenuView;
-import com.game.views.View;
 
 import java.awt.*;
 import java.util.ArrayList;
 
 public class MenuState extends GameState {
-    private GameManager gamemanager;
-    private View renderer;
     private Button[] buttons;
     private int focusedButton = 0;
     
     public MenuState(GameManager gamemanager) {
         super(gamemanager);
-        this.gamemanager = gamemanager;
         renderer = new MenuView();
         buttons = new Button[3];
         init();
@@ -30,12 +28,12 @@ public class MenuState extends GameState {
         Camera.setPosition(0, 0);
         int buttonWidth = 64;
         int buttonHeight = 32;
-        String ButtonPath = "res/images/Button.png";
+        String ButtonPath = "res/spritesheets/Button.png";
         AssetPool.addSpriteSheet(ButtonPath, new SpriteSheet(AssetPool.getTexture(ButtonPath), buttonWidth, buttonHeight));
-        buttons[0] = new DebugButton(new Vector2f((float) ((Settings.WIDTH / 2) - buttonWidth / 2), 20), ButtonPath, 0); //Play button
+        buttons[0] = new PlayButton(new Vector2f((float) ((Settings.WIDTH / 2) - buttonWidth / 2), 20), ButtonPath, 0, this.gamemanager); //Play button
         buttons[0].setFocused(true);
-        buttons[1] = new DebugButton(new Vector2f((float) ((Settings.WIDTH / 2) - buttonWidth / 2), 60), ButtonPath, 2); //Username button
-        buttons[2] = new ExitButton(new Vector2f((float) ((Settings.WIDTH) - buttonWidth) - 12, 100), ButtonPath, 1); //Exit button
+        buttons[1] = new DebugButton(new Vector2f((float) ((Settings.WIDTH / 2) - buttonWidth / 2), 60), ButtonPath, 2, this.gamemanager); //Username button
+        buttons[2] = new ExitButton(new Vector2f((float) ((Settings.WIDTH) - buttonWidth) - 12, 100), ButtonPath, 1, this.gamemanager); //Exit button
     }
     
     @Override
@@ -78,6 +76,8 @@ public class MenuState extends GameState {
         for (Button button : buttons) {
             renderdImages.add(button.getRenderedImage());
         }
-        renderer.render(g, 0, renderdImages);
+        Sprite background = AssetPool.getSpriteSheet("res/spritesheets/LoadingScreen.png").getSprite(0,0);
+        renderdImages.add(0, new RenderedImage(background.getImg(), new Vector2f(), background.getSize()));
+        renderer.render(g,renderdImages);
     }
 }

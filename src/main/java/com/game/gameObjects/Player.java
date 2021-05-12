@@ -11,21 +11,75 @@ public class Player extends Entity {
     
     public Player(Vector2f pos, String spritePath) {
         super(pos, spritePath);
+        acc = 2.0f;
+        maxSpeed = 3.0f;
+    }
+    
+    public void move(float dt) {
+        if (jumping) {
+            // TODO initialize jump
+        }
+        if (falling) {
+            // TODO falling down
+        }
+        if (landing) {
+            // TODO landing animation
+        }
+        if (right) {
+            dx += acc;
+            if (dx > maxSpeed) {
+                dx = maxSpeed;
+            }
+        } else {
+            if (dx > 0) {
+                dx -= deacc;
+                if (dx < 0) {
+                    dx = 0;
+                }
+            }
+        }
+        if (left) {
+            dx -= acc;
+            if (dx < -maxSpeed) {
+                dx = -maxSpeed;
+            }
+        } else {
+            if (dx < 0) {
+                dx += deacc;
+                if (dx > 0) {
+                    dx = 0;
+                }
+            }
+        }
     }
     
     @Override
     public void update(float dt) {
-    
+        move(dt);
+        animation.update(dt);
+        pos.add(new Vector2f(dx, dy));
     }
     
     @Override
-    public void input(MouseHandler mouse, KeyHandler keyboard) {
-    
+    public void input(MouseHandler mouse, KeyHandler key) {
+        if (key.right.down) {
+            right = true;
+        } else {
+            right = false;
+        }
+        if (key.left.down) {
+            left = true;
+        } else {
+            left = false;
+        }
+        if (key.space.down) {
+            jumping = true;
+        }
     }
     
     @Override
     public RenderedImage getRenderedImage() {
-        Sprite sprite = AssetPool.getSpriteSheet(spritePath).getSprite(0, 0);
-        return new RenderedImage(sprite.getImg(), new Vector2f(), sprite.getSize());
+        Sprite sprite = animation.getSprite();
+        return new RenderedImage(sprite.getImg(), pos, sprite.getSize());
     }
 }
