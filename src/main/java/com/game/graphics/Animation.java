@@ -37,7 +37,7 @@ public class Animation {
     public void update(float dt) {
         if (delay == -1) return;
         
-        count += (int) dt;
+        count += (int) dt / 1000000;
         
         if (count >= delay) {
             currentFrame++;

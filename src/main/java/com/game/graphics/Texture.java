@@ -1,5 +1,7 @@
 package com.game.graphics;
 
+import com.game.util.math.Vector2f;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -30,6 +32,10 @@ public class Texture {
     
     public int getHeight() {
         return height;
+    }
+    
+    public Vector2f getSize() {
+        return new Vector2f(width, height);
     }
     
     public BufferedImage getImg() {

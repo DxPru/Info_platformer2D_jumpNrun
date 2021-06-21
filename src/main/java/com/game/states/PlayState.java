@@ -29,7 +29,7 @@ public class PlayState extends GameState {
     
     @Override
     public void update(float dt) {
-        Camera.movePosition(0.05f * (int) dt, 0.0f);
+        Camera.movePosition(0.05f * (int) (dt / 1000000), 0.0f);
         for (GameObject gameObject : gameObjects) {
             gameObject.update(dt);
         }

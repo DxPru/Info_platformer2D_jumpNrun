@@ -20,8 +20,7 @@ public class GamePanel extends JPanel implements Runnable {
     
     public static int width, height;
     public static int oldFrameCount;
-    public static int oldTickCount;
-    public static int tickCount;
+    public static int frameCount;
     
     private Thread thread;
     private boolean running = false;
@@ -74,79 +73,39 @@ public class GamePanel extends JPanel implements Runnable {
         init();
         
         // Variables for the Game loop timing
-        final double GAME_HERTZ = Settings.GAME_HERTZ;
-        final double TRU = 1000000000 / GAME_HERTZ; // Time Before Update
+        final float GAME_FPS = Settings.GAME_FPS;
+        final float TTBR = 1000000000 / GAME_FPS; // TotalTimeBeforeRender
         
-        final int MUBR = 5; // Must Update Before Render
-        
-        double lastUpdateTime = System.nanoTime();
-        double lastRenderTime;
-        double lastUpdate = System.nanoTime();
-        
-        final double GAME_FPS = Settings.GAME_FPS;
-        final double TTBR = 1000000000 / GAME_FPS; // Total Time Before Render
-        
-        int frameCount = 0;
-        int lastSecondTime = (int) (lastUpdateTime / 1000000000);
-        oldFrameCount = 0;
-        
-        tickCount = 0;
-        oldTickCount = 0;
+        float dt = 0.0F;
+        float lastUpdate = System.nanoTime();
         
         while (running) {
-            
-            // Querying inputs && updating the Game (tick)
-            
+    
+            this.input(this.mouse, this.key);
+            this.update(dt);
+            this.render();
+            this.draw();
+    
             double now = System.nanoTime();
-            int updateCount = 0;
-            while (((now - lastUpdateTime) > TRU) && (updateCount < MUBR)) {
-                update((float) (System.currentTimeMillis() - lastUpdate));
-                input(mouse, key);
-                lastUpdate = System.currentTimeMillis();
-                lastUpdateTime += TRU;
-                updateCount++;
-                tickCount++;
-            }
-            
-            if (now - lastUpdateTime > TRU) {
-                lastUpdateTime = now - TRU;
-            }
-            
-            // rendering and drawing (frame)
-            input(mouse, key);
-            render();
-            draw();
-            lastRenderTime = now;
-            frameCount++;
-            
-            int thisSecond = (int) (lastUpdateTime / 1000000000);
-            if (thisSecond > lastSecondTime) {
-                if (frameCount != oldFrameCount) {
-                    System.out.println("New SECOND: " + thisSecond + " | " + frameCount);
-                    oldFrameCount = frameCount;
-                }
-                
-                if (tickCount != oldTickCount) {
-                    System.out.println("New SECOND (T): " + thisSecond + " | " + tickCount);
-                    oldTickCount = tickCount;
-                }
-                
-                tickCount = 0;
-                frameCount = 0;
-                lastSecondTime = thisSecond;
-            }
-            
-            // sleeping until next update
-            while (now - lastRenderTime < TTBR && now - lastUpdateTime < TRU) {
+            while (now - lastUpdate < TTBR) {
                 Thread.yield();
-                
+    
                 try {
                     Thread.sleep(1);
-                } catch (Exception e) {
-                    System.out.println("ERROR: yielding Thread"); // failed to pause Thread
+                } catch (Exception e){
+                    System.out.println("ERROR: yielding Thread");
                 }
-                
+    
                 now = System.nanoTime();
+            }
+    
+            dt = System.nanoTime() - lastUpdate;
+            lastUpdate = System.nanoTime();
+            frameCount = (int) (1000000000 / dt);
+            
+            if (oldFrameCount < frameCount - 5|| oldFrameCount > frameCount + 5 ) {
+                System.out.println("New DeltaTime: " + (int) dt + " | " + frameCount);
+                oldFrameCount = frameCount;
             }
         }
     }

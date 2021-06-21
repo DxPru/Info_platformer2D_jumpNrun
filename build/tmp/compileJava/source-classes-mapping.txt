@@ -20,15 +20,15 @@ com/game/states/GameOverState.java
  com.game.states.GameOverState
 com/game/gameObjects/ExitButton.java
  com.game.gameObjects.ExitButton
-com/game/gameObjects/Player.java
- com.game.gameObjects.Player
+com/game/util/MouseHandler.java
+ com.game.util.MouseHandler
 com/game/util/KeyHandler.java
  com.game.util.KeyHandler
  com.game.util.KeyHandler$Key
-com/game/tile/block/Block.java
- com.game.tile.block.Block
-com/game/states/PlayState.java
- com.game.states.PlayState
+com/game/util/data/PlayerData.java
+ com.game.util.data.PlayerData
+com/game/util/data/List.java
+ com.game.util.data.List
 com/game/states/PauseState.java
  com.game.states.PauseState
 com/game/Gui.java
@@ -45,8 +45,8 @@ com/game/util/RenderedImage.java
  com.game.util.RenderedImage
 com/game/views/PlayView.java
  com.game.views.PlayView
-com/game/tile/TileManager.java
- com.game.tile.TileManager
+com/game/graphics/Draw.java
+ com.game.graphics.Draw
 com/game/graphics/Renderer.java
  com.game.graphics.Renderer
 com/game/gameObjects/Button.java
@@ -71,11 +71,11 @@ com/game/views/View.java
  com.game.views.View
 com/game/util/AssetPool.java
  com.game.util.AssetPool
-com/game/util/MouseHandler.java
- com.game.util.MouseHandler
-com/game/graphics/Draw.java
- com.game.graphics.Draw
-com/game/util/data/List.java
- com.game.util.data.List
-com/game/util/data/PlayerData.java
- com.game.util.data.PlayerData
+com/game/tile/block/Block.java
+ com.game.tile.block.Block
+com/game/states/PlayState.java
+ com.game.states.PlayState
+com/game/tile/TileManager.java
+ com.game.tile.TileManager
+com/game/gameObjects/Player.java
+ com.game.gameObjects.Player

@@ -6,15 +6,14 @@ package com.game.util;
 
 public class Settings {
     // screen config
-    public static final int PX_WIDTH = 1920; // screen width should be a 16:9 ratio
-    public static final int PX_HEIGHT = 1080; // screen height
-    public static final boolean FULLSCREEN = true;
+    public static final int PX_WIDTH = 1280; // screen width should be a 16:9 ratio
+    public static final int PX_HEIGHT = 720; // screen height
+    public static final boolean FULLSCREEN = false;
     public static final int WIDTH = 256;
     public static final int HEIGHT = 144;
     
     // Game speed config
-    public static final double GAME_HERTZ = 60.0;
-    public static final double GAME_FPS = 120.0;
+    public static final float GAME_FPS = 120.0f;
     
     // Tile config
     public static final float TILE_SIZE = 16.0f;  // size of the individual Tiles

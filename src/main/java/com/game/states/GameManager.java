@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class GameManager {
     private static ArrayList<GameState> states;
-    
+    // TODO ArrayList zu Stack (only first one is rendered and updated)
     public GameManager() {
         states = new ArrayList<GameState>();
         
