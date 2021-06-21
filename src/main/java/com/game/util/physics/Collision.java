@@ -3,7 +3,7 @@ package com.game.util.physics;
 import com.game.util.math.Vector2f;
 
 public class Collision {
-    private Rect rect = new Rect();
+    public Rect rect = new Rect();
     
     public Collision() {}
     
@@ -12,10 +12,10 @@ public class Collision {
     }
     
     public boolean CollRect(Rect rect) {
-        return this.rect.getPos().y >= rect.getPos().y + rect.getSize().y ||
+        return !(this.rect.getPos().y >= rect.getPos().y + rect.getSize().y ||
                 rect.getPos().y >= this.rect.getPos().y + this.rect.getSize().y ||
                 this.rect.getPos().x >= rect.getPos().x + rect.getSize().x ||
-                rect.getPos().x >= this.rect.getPos().x + this.rect.getSize().x;
+                rect.getPos().x >= this.rect.getPos().x + this.rect.getSize().x);
         
     }
     

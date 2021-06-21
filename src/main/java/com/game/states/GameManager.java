@@ -15,9 +15,12 @@ import java.util.Stack;
 
 public class GameManager {
     private static Stack<GameState> states;
+    private static GameManager instance;
+    
     public GameManager() {
         states = new Stack<GameState>();
-    
+        instance = this;
+        
         states.add(new PlayState(this)); // loading PlayState in preparation
         states.add(new MenuState(this)); // preloading Menustate
         states.add(new StartState(this)); // Starting welcome screen
@@ -75,5 +78,9 @@ public class GameManager {
     
     public void render(Graphics2D g) {
         states.lastElement().render(g);
+    }
+    
+    public static GameManager getInstance() {
+        return instance;
     }
 }

@@ -9,6 +9,7 @@ import java.awt.*;
 public abstract class GameState {
     protected GameManager gamemanager;
     protected View renderer;
+    
     public GameState(GameManager gamemanager) {
         this.gamemanager = gamemanager;
     }
@@ -16,6 +17,7 @@ public abstract class GameState {
     public void reset() {
         this.init();
     }
+    
     protected abstract void init();
     
     public abstract void update(float dt);

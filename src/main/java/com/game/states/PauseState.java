@@ -27,6 +27,9 @@ public class PauseState extends GameState {
             gamemanager.addAndPop(Settings.MENU);
             gamemanager.reset();
         }
+        if (key.space.clicked) {
+            gamemanager.pop();
+        }
     }
     
     @Override

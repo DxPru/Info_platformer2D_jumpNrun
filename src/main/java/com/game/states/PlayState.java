@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class PlayState extends GameState {
     private ArrayList<GameObject> gameObjects;
     private TileManager tilemanager;
+    private Background background;
     
     public PlayState(GameManager gamemanager) {
         super(gamemanager);
@@ -27,7 +28,9 @@ public class PlayState extends GameState {
         gameObjects = new ArrayList<GameObject>();
         String bgPath = "res/spritesheets/Background.png";
         AssetPool.addSpriteSheet(bgPath, new SpriteSheet(AssetPool.getTexture(bgPath),256, 146));
-        Background.setSpriteSheet(bgPath);
+        background = new Background(bgPath);
+        background.addBg();
+        background.addBg();
         String tilePath = "res/spritesheets/Background.png";
         AssetPool.addSpriteSheet(tilePath, new SpriteSheet(AssetPool.getTexture(tilePath),8, 8));
         tilemanager = new TileManager(tilePath);
@@ -40,7 +43,7 @@ public class PlayState extends GameState {
     @Override
     public void update(float dt) {
         Camera.movePosition(0.05f * (int) (dt / 1000000), 0.0f);
-        Background.update(dt);
+        background.update(dt);
         tilemanager.update(dt);
         for (GameObject gameObject : gameObjects) {
             gameObject.update(dt);
@@ -60,7 +63,7 @@ public class PlayState extends GameState {
     @Override
     public void render(Graphics2D g) {
         ArrayList<RenderedImage> renderedImages = new ArrayList<RenderedImage>();
-        renderedImages.addAll(Background.getRenderedImage());
+        renderedImages.addAll(background.getRenderedImage());
         renderedImages.addAll(tilemanager.getRenderedImage());
         for (GameObject gameObject : gameObjects) {
             renderedImages.add(gameObject.getRenderedImage());

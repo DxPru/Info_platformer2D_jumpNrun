@@ -22,6 +22,9 @@ public class Settings {
     public static final float X_TILECOUNT = PX_WIDTH / PX_TILE_SIZE;
     public static final float Y_TILECOUNT = PX_HEIGHT / PX_TILE_SIZE;
     
+    // Map config
+    public static final float FLOOR_HEIGHT = HEIGHT - 10.0f;
+    
     // GameScene config
     public static final int START = 0;
     public static final int MENU = 1;
