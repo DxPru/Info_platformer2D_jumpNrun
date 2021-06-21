@@ -47,10 +47,10 @@ public class Background {
     }
     
     public void genBackground(int count) {
-
+    
     }
     
-    public class BG{
+    public class BG {
         protected Vector2f pos;
         protected Vector2f spritePos;
         protected Collision collision;
@@ -92,7 +92,7 @@ public class Background {
         
         public void genPos() {
             this.pos = nextpos;
-            nextpos = new Vector2f(this.pos).add(new Vector2f(AssetPool.getSpriteSheet(filepath).getSprite(spritePos).getWidth(),0));
+            nextpos = new Vector2f(this.pos).add(new Vector2f(AssetPool.getSpriteSheet(filepath).getSprite(spritePos).getWidth(), 0));
         }
     }
 }

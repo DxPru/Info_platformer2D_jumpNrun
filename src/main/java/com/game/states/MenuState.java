@@ -77,8 +77,8 @@ public class MenuState extends GameState {
         for (Button button : buttons) {
             renderdImages.add(button.getRenderedImage());
         }
-        Sprite background = AssetPool.getSpriteSheet("res/spritesheets/LoadingScreen.png").getSprite(0,0);
+        Sprite background = AssetPool.getSpriteSheet("res/spritesheets/LoadingScreen.png").getSprite(0, 0);
         renderdImages.add(0, new RenderedImage(background.getImg(), new Vector2f(), background.getSize()));
-        renderer.render(g,renderdImages);
+        renderer.render(g, renderdImages);
     }
 }

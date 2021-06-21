@@ -58,7 +58,7 @@ public class GameManager {
         states.pop();
         add(state);
     }
-
+    
     public void reset() {
         for (GameState state : states) {
             state.reset();

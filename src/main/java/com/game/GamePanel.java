@@ -80,30 +80,30 @@ public class GamePanel extends JPanel implements Runnable {
         float lastUpdate = System.nanoTime();
         
         while (running) {
-    
+            
             this.input(this.mouse, this.key);
             this.update(dt);
             this.render();
             this.draw();
-    
+            
             double now = System.nanoTime();
             while (now - lastUpdate < TTBR) {
                 Thread.yield();
-    
+                
                 try {
                     Thread.sleep(1);
-                } catch (Exception e){
+                } catch (Exception e) {
                     System.out.println("ERROR: yielding Thread");
                 }
-    
+                
                 now = System.nanoTime();
             }
-    
+            
             dt = System.nanoTime() - lastUpdate;
             lastUpdate = System.nanoTime();
             frameCount = (int) (1000000000 / dt);
             
-            if (oldFrameCount < frameCount - 5|| oldFrameCount > frameCount + 5 ) {
+            if (oldFrameCount < frameCount - 5 || oldFrameCount > frameCount + 5) {
                 System.out.println("New DeltaTime: " + (int) dt + " | " + frameCount);
                 oldFrameCount = frameCount;
             }
@@ -124,6 +124,7 @@ public class GamePanel extends JPanel implements Runnable {
             g.setColor(new Color(66, 134, 244));
             g.fillRect(0, 0, width, height);
             this.gamemanager.render(g);
+            g.drawString("FPS: " + frameCount, 10, 20);
         }
     }
     

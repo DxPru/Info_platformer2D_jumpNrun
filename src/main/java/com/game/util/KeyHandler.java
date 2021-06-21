@@ -17,6 +17,7 @@ public class KeyHandler implements KeyListener {
     public Key menu = new Key();
     public Key enter = new Key();
     public Key escape = new Key();
+    
     public KeyHandler(GamePanel game) {
         game.addKeyListener(this);
     }

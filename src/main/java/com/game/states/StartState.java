@@ -21,8 +21,8 @@ public class StartState extends GameState {
     @Override
     protected void init() {
         String filepath = "res/spritesheets/LoadingScreen.png";
-        AssetPool.addSpriteSheet(filepath, new SpriteSheet(AssetPool.getTexture(filepath),256, 144));
-        animation = new Animation(filepath,1);
+        AssetPool.addSpriteSheet(filepath, new SpriteSheet(AssetPool.getTexture(filepath), 256, 144));
+        animation = new Animation(filepath, 1);
         animation.setDelay(600);
     }
     
@@ -42,7 +42,7 @@ public class StartState extends GameState {
     @Override
     public void render(Graphics2D g) {
         ArrayList<RenderedImage> ri = new ArrayList<RenderedImage>();
-        ri.add(0,new RenderedImage(animation.getSprite().getImg(), new Vector2f(), animation.getSprite().getSize()));
+        ri.add(0, new RenderedImage(animation.getSprite().getImg(), new Vector2f(), animation.getSprite().getSize()));
         renderer.render(g, ri);
     }
 }

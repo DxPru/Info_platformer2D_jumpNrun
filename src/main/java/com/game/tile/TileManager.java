@@ -29,7 +29,7 @@ public class TileManager {
     }
     
     public void update(float dt) {
-        for(Block block : this.tiles) {
+        for (Block block : this.tiles) {
             block.update(dt);
         }
     }
@@ -41,7 +41,7 @@ public class TileManager {
     public ArrayList<RenderedImage> getRenderedImage() {
         ArrayList<RenderedImage> tmp = new ArrayList<RenderedImage>();
         
-        for(Block block : this.tiles) {
+        for (Block block : this.tiles) {
             tmp.add(block.getRenderedImage());
         }
         

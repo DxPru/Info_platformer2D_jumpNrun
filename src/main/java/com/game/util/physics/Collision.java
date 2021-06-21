@@ -5,7 +5,8 @@ import com.game.util.math.Vector2f;
 public class Collision {
     public Rect rect = new Rect();
     
-    public Collision() {}
+    public Collision() {
+    }
     
     public Collision(Rect rect) {
         this.rect = rect;

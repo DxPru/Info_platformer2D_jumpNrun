@@ -23,11 +23,11 @@ public class Player extends Entity {
     
     private void move(float dt) {
         float dtSec = dt / 1000000000;
-    
+        
         if (jumping) {
             if (start.y - pos.y >= jumpHeight) {
                 jumping = false;
-            } else{
+            } else {
                 dy -= accFall * dtSec;
                 if (-dy > maxFallSpeed) {
                     dy = -maxFallSpeed;
@@ -87,7 +87,7 @@ public class Player extends Entity {
                 if (dir != RIGHT) {
                     animation.setDir(RIGHT);
                 }
-            } else if (left ) {
+            } else if (left) {
                 if (dir != LEFT) {
                     animation.setDir(LEFT);
                 }
@@ -101,7 +101,7 @@ public class Player extends Entity {
                 if (dir != RIGHT + JUMP) {
                     animation.setDir(RIGHT + JUMP);
                 }
-            } else if (left ) {
+            } else if (left) {
                 if (dir != LEFT + JUMP) {
                     animation.setDir(LEFT + JUMP);
                 }

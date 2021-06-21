@@ -6,9 +6,9 @@ package com.game.util;
 
 public class Settings {
     // screen config
-    public static final int PX_WIDTH = 1280; // screen width should be a 16:9 ratio
-    public static final int PX_HEIGHT = 720; // screen height
-    public static final boolean FULLSCREEN = false;
+    public static final int PX_WIDTH = 1920; // screen width should be a 16:9 ratio
+    public static final int PX_HEIGHT = 1080; // screen height
+    public static final boolean FULLSCREEN = true;
     public static final int WIDTH = 256;
     public static final int HEIGHT = 144;
     
@@ -31,4 +31,7 @@ public class Settings {
     public static final int PLAY = 2;
     public static final int PAUSE = 3;
     public static final int GAMEOVER = 4;
+    
+    // Debug
+    public static final boolean DEBUG = true;
 }

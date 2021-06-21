@@ -19,12 +19,12 @@ public class Rect {
         return pos;
     }
     
-    public Vector2f getSize() {
-        return size;
-    }
-    
     public void setPos(Vector2f pos) {
         this.pos = pos;
+    }
+    
+    public Vector2f getSize() {
+        return size;
     }
     
     public void setSize(Vector2f size) {

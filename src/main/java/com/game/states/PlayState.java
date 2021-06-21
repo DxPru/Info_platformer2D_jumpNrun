@@ -27,16 +27,16 @@ public class PlayState extends GameState {
     protected void init() {
         gameObjects = new ArrayList<GameObject>();
         String bgPath = "res/spritesheets/Background.png";
-        AssetPool.addSpriteSheet(bgPath, new SpriteSheet(AssetPool.getTexture(bgPath),256, 146));
+        AssetPool.addSpriteSheet(bgPath, new SpriteSheet(AssetPool.getTexture(bgPath), 256, 146));
         background = new Background(bgPath);
         background.addBg();
         background.addBg();
         String tilePath = "res/spritesheets/Background.png";
-        AssetPool.addSpriteSheet(tilePath, new SpriteSheet(AssetPool.getTexture(tilePath),8, 8));
+        AssetPool.addSpriteSheet(tilePath, new SpriteSheet(AssetPool.getTexture(tilePath), 8, 8));
         tilemanager = new TileManager(tilePath);
         tilemanager.genTileMap();
         String playerPath = "res/spritesheets/Player.png";
-        AssetPool.addSpriteSheet(playerPath, new SpriteSheet(AssetPool.getTexture(playerPath),16,32));
+        AssetPool.addSpriteSheet(playerPath, new SpriteSheet(AssetPool.getTexture(playerPath), 16, 32));
         gameObjects.add(new Player(new Vector2f(Settings.WIDTH / 2.0f, Settings.HEIGHT / 2.0f), playerPath));
     }
     
