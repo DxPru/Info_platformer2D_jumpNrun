@@ -53,4 +53,9 @@ public class Camera {
         // translates World Coordinates to screen coordinates
         return new Vector2f(pos).sub(projection[0]).mul(Settings.SCALE);
     }
+    
+    public static Vector2f getUiAbsPos(Vector2f pos) {
+        // scales Ui coords
+        return new Vector2f(pos).mul(Settings.SCALE);
+    }
 }

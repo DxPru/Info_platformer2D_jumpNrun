@@ -2,6 +2,7 @@ package com.game.tile;
 
 import com.game.graphics.SpriteSheet;
 import com.game.tile.block.Block;
+import com.game.util.AssetPool;
 import com.game.util.RenderedImage;
 import com.game.util.math.Vector2f;
 
@@ -9,10 +10,10 @@ import java.util.ArrayList;
 
 public class TileManager {
     private ArrayList<Block> tiles = new ArrayList<Block>();
-    private SpriteSheet spriteSheet;
+    private String filePath;
     
-    public TileManager(SpriteSheet spriteSheet) {
-        this.spriteSheet = spriteSheet;
+    public TileManager(String filePath) {
+        this.filePath = filePath;
     }
     
     public void addBlock(Block block) {
@@ -20,7 +21,7 @@ public class TileManager {
     }
     
     public void addBlock(Vector2f pos, Vector2f spritePos) {
-        this.addBlock(new Block(pos, spriteSheet.getSprite(spritePos)));
+        this.addBlock(new Block(pos, AssetPool.getSpriteSheet(this.filePath).getSprite(spritePos)));
     }
     
     public void popBlock(Block block) {

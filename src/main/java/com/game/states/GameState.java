@@ -13,6 +13,11 @@ public abstract class GameState {
         this.gamemanager = gamemanager;
     }
     
+    public void reset() {
+        this.init();
+    }
+    protected abstract void init();
+    
     public abstract void update(float dt);
     
     public abstract void input(MouseHandler mouse, KeyHandler key);

@@ -11,20 +11,24 @@ import com.game.util.MouseHandler;
 import com.game.util.Settings;
 
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.Stack;
 
 public class GameManager {
-    private static ArrayList<GameState> states;
-    // TODO ArrayList zu Stack (only first one is rendered and updated)
+    private static Stack<GameState> states;
     public GameManager() {
-        states = new ArrayList<GameState>();
-        
+        states = new Stack<GameState>();
+    
+        states.add(new PlayState(this)); // loading PlayState in preparation
+        states.add(new MenuState(this)); // preloading Menustate
         states.add(new StartState(this)); // Starting welcome screen
-        // states.add(new PlayState(this)); // loading PlayState in preparation
     }
     
-    public void pop(int state) {
+    public void remove(int state) {
         states.remove(state);
+    }
+    
+    public void pop() {
+        states.pop();
     }
     
     public void add(int state) {
@@ -48,28 +52,28 @@ public class GameManager {
     }
     
     public void addAndPop(int state) {
-        states.remove(0);
+        states.pop();
         add(state);
+    }
+
+    public void reset() {
+        for (GameState state : states) {
+            state.reset();
+        }
     }
     
     public void update(float dt) {
         if (dt >= 0) {
             Camera.updateProjection();
-            for (GameState state : states) {
-                state.update(dt);
-            }
+            states.lastElement().update(dt);
         }
     }
     
     public void input(MouseHandler mouse, KeyHandler key) {
-        for (GameState state : states) {
-            state.input(mouse, key);
-        }
+        states.lastElement().input(mouse, key);
     }
     
     public void render(Graphics2D g) {
-        for (GameState state : states) {
-            state.render(g);
-        }
+        states.lastElement().render(g);
     }
 }

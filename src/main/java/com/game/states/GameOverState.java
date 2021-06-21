@@ -11,6 +11,11 @@ public class GameOverState extends GameState {
     }
     
     @Override
+    protected void init() {
+    
+    }
+    
+    @Override
     public void update(float dt) {
     
     }

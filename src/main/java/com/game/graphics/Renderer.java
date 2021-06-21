@@ -26,4 +26,13 @@ public class Renderer {
             g.drawImage(img, (int) absPos.x, (int) absPos.y, (int) absSize.x, (int) absSize.y, null);
         }
     }
+    
+    public void renderUi(Graphics2D g, ArrayList<RenderedImage> renderedImages) {
+        for (RenderedImage renderedImage : renderedImages) {
+            Vector2f absPos = Camera.getUiAbsPos(renderedImage.getPos());
+            BufferedImage img = renderedImage.getImg();
+            Vector2f absSize = new Vector2f(renderedImage.getSize()).mul(Settings.SCALE);
+            g.drawImage(img, (int) absPos.x, (int) absPos.y, (int) absSize.x, (int) absSize.y, null);
+        }
+    }
 }

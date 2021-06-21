@@ -6,11 +6,11 @@ import com.game.util.RenderedImage;
 
 public class Block {
     private Vector2f pos;
-    private Sprite texture;
+    private Sprite sprite;
     
-    public Block(Vector2f pos, Sprite texture) {
+    public Block(Vector2f pos, Sprite sprite) {
         this.pos = new Vector2f(pos);
-        this.texture = texture;
+        this.sprite = sprite;
     }
     
     public void update(float dt) {
@@ -22,6 +22,6 @@ public class Block {
     }
     
     public RenderedImage getRenderedImage() {
-        return new RenderedImage(this.texture.getImg(), this.pos, this.texture.getSize());
+        return new RenderedImage(this.sprite.getImg(), this.pos, this.sprite.getSize());
     }
 }

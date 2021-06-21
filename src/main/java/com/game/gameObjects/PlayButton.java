@@ -1,7 +1,6 @@
 package com.game.gameObjects;
 
 import com.game.states.GameManager;
-import com.game.util.Settings;
 import com.game.util.math.Vector2f;
 
 public class PlayButton extends Button {
@@ -11,6 +10,6 @@ public class PlayButton extends Button {
     
     @Override
     public void action() {
-        gameManager.addAndPop(Settings.PLAY);
+        gameManager.pop();
     }
 }

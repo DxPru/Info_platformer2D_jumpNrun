@@ -24,7 +24,8 @@ public class MenuState extends GameState {
         init();
     }
     
-    private void init() {
+    @Override
+    protected void init() {
         Camera.setPosition(0, 0);
         int buttonWidth = 64;
         int buttonHeight = 32;

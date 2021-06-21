@@ -12,6 +12,6 @@ public class MenuView extends View {
     @Override
     public void render(Graphics2D g, ArrayList<RenderedImage> renderedImages) {
         g.drawImage(renderedImages.get(0).getImg(), 0, 0, Settings.PX_WIDTH, Settings.PX_HEIGHT, null);
-        renderer.render(g, renderedImages);
+        renderer.renderUi(g, renderedImages);
     }
 }

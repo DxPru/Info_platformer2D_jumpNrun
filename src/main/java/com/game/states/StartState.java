@@ -18,7 +18,8 @@ public class StartState extends GameState {
         init();
     }
     
-    public void init() {
+    @Override
+    protected void init() {
         String filepath = "res/spritesheets/LoadingScreen.png";
         AssetPool.addSpriteSheet(filepath, new SpriteSheet(AssetPool.getTexture(filepath),256, 144));
         animation = new Animation(filepath,1);
@@ -29,7 +30,7 @@ public class StartState extends GameState {
     public void update(float dt) {
         animation.update(dt);
         if (animation.hasPlayed()) {
-            gamemanager.addAndPop(Settings.MENU);
+            gamemanager.pop();
         }
     }
     
