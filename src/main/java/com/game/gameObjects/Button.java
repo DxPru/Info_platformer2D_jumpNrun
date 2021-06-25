@@ -10,8 +10,8 @@ import com.game.util.math.Vector2f;
 
 
 public abstract class Button extends GameObject {
-    protected GameManager gameManager;
     private final int spriteYPos;
+    protected GameManager gameManager;
     private int spriteXPos;
     private boolean focused;
     

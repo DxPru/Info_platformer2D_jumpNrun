@@ -26,6 +26,10 @@ public class GameManager {
         states.add(new StartState(this)); // Starting welcome screen
     }
     
+    public static GameManager getInstance() {
+        return instance;
+    }
+    
     public void remove(int state) {
         states.remove(state);
     }
@@ -78,9 +82,5 @@ public class GameManager {
     
     public void render(Graphics2D g) {
         states.lastElement().render(g);
-    }
-    
-    public static GameManager getInstance() {
-        return instance;
     }
 }

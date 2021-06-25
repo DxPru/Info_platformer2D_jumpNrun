@@ -1,7 +1,5 @@
 package com.game.views;
 
-import com.game.graphics.SpriteSheet;
-import com.game.util.AssetPool;
 import com.game.util.RenderedImage;
 import com.game.util.Settings;
 

@@ -8,8 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AssetPool {
-    private static Map<String, Texture> textures = new HashMap<>();
-    private static Map<String, SpriteSheet> spritesheets = new HashMap<>();
+    private static final Map<String, Texture> textures = new HashMap<>();
+    private static final Map<String, SpriteSheet> spritesheets = new HashMap<>();
     
     public static Texture getTexture(String filepath) {
         File file = new File(filepath);
@@ -25,9 +25,7 @@ public class AssetPool {
     
     public static SpriteSheet getSpriteSheet(String filepath) {
         File file = new File(filepath);
-        if (!AssetPool.spritesheets.containsKey(file.getAbsolutePath())) {
-            assert false : "ERROR: Tried to access spritesheet '" + filepath + "' and it's not been added!";
-        }
+        assert AssetPool.spritesheets.containsKey(file.getAbsolutePath()) : "ERROR: Tried to access spritesheet '" + filepath + "' and it's not been added!";
         return spritesheets.get(file.getAbsolutePath());
     }
     

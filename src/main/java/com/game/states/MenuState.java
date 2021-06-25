@@ -14,7 +14,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class MenuState extends GameState {
-    private Button[] buttons;
+    private final Button[] buttons;
     private int focusedButton = 0;
     
     public MenuState(GameManager gamemanager) {
@@ -41,11 +41,7 @@ public class MenuState extends GameState {
     public void update(float dt) {
         if (!buttons[focusedButton].isFocused()) {
             for (int i = 0; i < buttons.length; i++) {
-                if (i == focusedButton) {
-                    buttons[i].setFocused(true);
-                } else {
-                    buttons[i].setFocused(false);
-                }
+                buttons[i].setFocused(i == focusedButton);
             }
         }
     }

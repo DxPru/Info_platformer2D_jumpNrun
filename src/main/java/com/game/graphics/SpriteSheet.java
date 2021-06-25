@@ -4,9 +4,10 @@ import com.game.util.math.Vector2f;
 
 public class SpriteSheet {
     
-    private Texture texture;
-    private Sprite[][] sprites;
-    private int width, height;
+    private final Texture texture;
+    private final Sprite[][] sprites;
+    private final int width;
+    private final int height;
     
     public SpriteSheet(Texture texture, int spriteWidth, int spriteHeight) {
         this.width = texture.getWidth() / spriteWidth;

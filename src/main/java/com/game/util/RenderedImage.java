@@ -5,9 +5,9 @@ import com.game.util.math.Vector2f;
 import java.awt.image.BufferedImage;
 
 public class RenderedImage {
-    private BufferedImage img;
-    private Vector2f pos;
-    private Vector2f size;
+    private final BufferedImage img;
+    private final Vector2f pos;
+    private final Vector2f size;
     
     public RenderedImage(BufferedImage img, Vector2f pos, Vector2f size) {
         this.img = img;

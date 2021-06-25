@@ -10,9 +10,9 @@ import com.game.util.physics.Rect;
 
 public class Camera {
     private static final Vector2f PROJECTION_SIZE = new Vector2f(Settings.WIDTH, Settings.HEIGHT);
-    private static Vector2f position = new Vector2f(); // position of the Camera (Middle of the screen)
-    private static Vector2f[] projection = new Vector2f[2];
-    private static Rect rect = new Rect(position, PROJECTION_SIZE);
+    private static final Vector2f position = new Vector2f(); // position of the Camera (Middle of the screen)
+    private static final Vector2f[] projection = new Vector2f[2];
+    private static final Rect rect = new Rect(position, PROJECTION_SIZE);
     
     public Camera() {
     }
