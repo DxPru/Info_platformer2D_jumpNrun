@@ -13,8 +13,9 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class PlayState extends GameState {
+    private static TileManager tilemanager;
+    private static float score = 0;
     private ArrayList<GameObject> gameObjects;
-    private TileManager tilemanager;
     private Background background;
     
     public PlayState(GameManager gamemanager) {
@@ -23,26 +24,33 @@ public class PlayState extends GameState {
         init();
     }
     
+    public static TileManager getTilemanager() {
+        return tilemanager;
+    }
+    
+    public static int getScore() {
+        return (int) score;
+    }
+    
     @Override
     protected void init() {
+        score = 0;
         gameObjects = new ArrayList<GameObject>();
         String bgPath = "res/spritesheets/Background.png";
         AssetPool.addSpriteSheet(bgPath, new SpriteSheet(AssetPool.getTexture(bgPath), 256, 146));
         background = new Background(bgPath);
         background.addBg();
         background.addBg();
-        String tilePath = "res/spritesheets/Background.png";
-        AssetPool.addSpriteSheet(tilePath, new SpriteSheet(AssetPool.getTexture(tilePath), 8, 8));
-        tilemanager = new TileManager(tilePath);
-        tilemanager.genTileMap();
+        tilemanager = new TileManager("res/tilemaps/Block.xml", "res/spritesheets/Block.png");
         String playerPath = "res/spritesheets/Player.png";
-        AssetPool.addSpriteSheet(playerPath, new SpriteSheet(AssetPool.getTexture(playerPath), 16, 32));
+        AssetPool.addSpriteSheet(playerPath, new SpriteSheet(AssetPool.getTexture(playerPath), 16, 16));
         gameObjects.add(new Player(new Vector2f(Settings.WIDTH / 2.0f, Settings.HEIGHT / 2.0f), playerPath));
     }
     
     @Override
     public void update(float dt) {
-        Camera.movePosition(0.05f * (int) (dt / 1000000), 0.0f);
+        score += (dt / 1000000) * 0.001;
+        Camera.movePosition((0.045f + (score / 1500)) * (dt / 1000000), 0.0f);
         background.update(dt);
         tilemanager.update(dt);
         for (GameObject gameObject : gameObjects) {
@@ -69,5 +77,6 @@ public class PlayState extends GameState {
             renderedImages.add(gameObject.getRenderedImage());
         }
         renderer.render(g, renderedImages);
+        g.drawString(Integer.toString((int) score), 40, 20);
     }
 }

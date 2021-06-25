@@ -21,8 +21,10 @@ public abstract class Entity extends GameObject {
     
     protected float maxSpeed = 4f;
     protected float jumpHeight = 20.0f;
-    protected float maxFallSpeed = 8.0f;
+    protected float maxFallSpeed = 4.0f;
+    protected float maxJumpSpeed = 8.0f;
     protected float accFall = 3.0f;
+    protected float accJump = 2.0f;
     protected float acc = 3.0f;
     protected float deacc = 0.75f;
     

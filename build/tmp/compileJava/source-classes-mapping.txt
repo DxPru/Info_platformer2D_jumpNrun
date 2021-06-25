@@ -25,6 +25,7 @@ com/game/gameObjects/ExitButton.java
  com.game.gameObjects.ExitButton
 com/game/gameObjects/Player.java
  com.game.gameObjects.Player
+ com.game.gameObjects.Player$1
 com/game/util/KeyHandler.java
  com.game.util.KeyHandler
  com.game.util.KeyHandler$Key
@@ -54,6 +55,8 @@ com/game/views/PlayView.java
  com.game.views.PlayView
 com/game/tile/TileManager.java
  com.game.tile.TileManager
+com/game/tile/TileMap.java
+ com.game.tile.TileMap
 com/game/views/GameOverView.java
  com.game.views.GameOverView
 com/game/graphics/Renderer.java
@@ -70,6 +73,8 @@ com/game/graphics/Sprite.java
  com.game.graphics.Sprite
 com/game/views/StartView.java
  com.game.views.StartView
+com/game/util/physics/CollisionType.java
+ com.game.util.physics.CollisionType
 com/game/gameObjects/GameObject.java
  com.game.gameObjects.GameObject
 com/game/util/Settings.java

@@ -9,13 +9,12 @@ import com.game.util.math.Vector2f;
 import com.game.util.physics.Collision;
 import com.game.util.physics.Rect;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Stack;
 
 public class Background {
     private String filepath;
-    private Stack<BG> backgrounds = new Stack<BG>();
+    private final Stack<BG> backgrounds = new Stack<BG>();
     private Vector2f nextpos = new Vector2f();
     
     public Background(String filePath) {
@@ -68,7 +67,7 @@ public class Background {
         }
         
         public void update(float dt) {
-            if (!collision.CollRectXPos(Camera.getRect())) {
+            if (collision.rect.getPos().x + collision.rect.getSize().x < Camera.getRect().getPos().x) {
                 this.genPos();
                 this.collision.rect.setPos(this.pos);
                 this.genSpritePos();

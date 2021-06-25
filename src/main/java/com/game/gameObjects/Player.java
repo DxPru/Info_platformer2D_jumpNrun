@@ -5,66 +5,109 @@ import com.game.states.GameManager;
 import com.game.states.PlayState;
 import com.game.util.*;
 import com.game.util.math.Vector2f;
+import com.game.util.physics.Rect;
+
+import java.util.Stack;
 
 public class Player extends Entity {
     private Vector2f start;
-    private float floor_height = Settings.FLOOR_HEIGHT;
+    private final float floor_height = Settings.FLOOR_HEIGHT;
     
     public Player(Vector2f pos, String spritePath) {
         super(pos, spritePath);
         start = new Vector2f(pos);
         animation.setDelay(100);
         acc = 0.1f;
-        accFall = 0.2f;
+        accFall = 0.1f;
+        accJump = 0.15f;
         deacc = 0.1f;
-        maxSpeed = 0.01f;
+        maxSpeed = 0.0125f;
         maxFallSpeed = 0.02f;
+        maxJumpSpeed = 0.02f;
+        jumpHeight = 14f;
     }
     
     private void move(float dt) {
-        float dtSec = dt / 1000000000;
+        float dtSec = (dt / 1000000000);
+        float scoreMult = (float) PlayState.getScore() / 20f;
+        float flyMult = 0.35f;
         
         if (jumping) {
+            System.out.println(start.y);
             if (start.y - pos.y >= jumpHeight) {
+                System.out.println("Jumping false");
                 jumping = false;
             } else {
-                dy -= accFall * dtSec;
-                if (-dy > maxFallSpeed) {
-                    dy = -maxFallSpeed;
+                dy -= accJump * dtSec;
+                if (-dy > maxJumpSpeed) {
+                    dy = -maxJumpSpeed;
                 }
             }
         } else {
-            dy += deacc * dtSec;
-        }
-        if (right) {
-            dx += acc * dtSec;
-            if (dx > maxSpeed) {
-                dx = maxSpeed;
+            dy += accFall * dtSec;
+            if (dy > maxFallSpeed) {
+                dy = maxFallSpeed;
             }
-        } else {
-            if (dx > 0) {
-                dx -= deacc * dtSec;
-                if (dx < 0) {
-                    dx = 0;
+        }
+        if (!falling) {
+            if (right) {
+                dx += (acc + scoreMult) * dtSec;
+                if (dx > maxSpeed) {
+                    dx = maxSpeed;
                 }
-            }
-        }
-        if (left) {
-            dx -= acc * dtSec;
-            if (dx < -maxSpeed) {
-                dx = -maxSpeed;
-            }
-        } else {
-            if (dx < 0) {
-                dx += deacc * dtSec;
+            } else {
                 if (dx > 0) {
-                    dx = 0;
+                    dx -= (deacc + scoreMult) * dtSec;
+                    if (dx < 0) {
+                        dx = 0;
+                    }
+                }
+            }
+            if (left) {
+                dx -= (acc + scoreMult) * dtSec;
+                if (dx < -maxSpeed) {
+                    dx = -maxSpeed;
+                }
+            } else {
+                if (dx < 0) {
+                    dx += (deacc + scoreMult) * dtSec;
+                    if (dx > 0) {
+                        dx = 0;
+                    }
+                }
+            }
+        } else {
+            if (right) {
+                dx += flyMult * (acc + scoreMult) * dtSec;
+                if (dx > maxSpeed) {
+                    dx = maxSpeed;
+                }
+            } else {
+                if (dx > 0) {
+                    dx -= flyMult * (deacc + scoreMult) * dtSec;
+                    if (dx < 0) {
+                        dx = 0;
+                    }
+                }
+            }
+            if (left) {
+                dx -= flyMult * (acc + scoreMult) * dtSec;
+                if (dx < -maxSpeed) {
+                    dx = -maxSpeed;
+                }
+            } else {
+                if (dx < 0) {
+                    dx += flyMult * (deacc + scoreMult) * dtSec;
+                    if (dx > 0) {
+                        dx = 0;
+                    }
                 }
             }
         }
     }
     
     private void collision() {
+        
         if (collision.CollY(floor_height)) {
             if (dy >= 0.0f) {
                 dy = 0.0f;
@@ -76,7 +119,59 @@ public class Player extends Entity {
         }
         if (!collision.CollRect(Camera.getRect())) {
             GameManager.getInstance().add(Settings.GAMEOVER);
+            return;
         }
+        
+        Stack<Rect> rects = PlayState.getTilemanager().getRects();
+        int count = 0;
+        
+        for (Rect rect : rects) {
+            if (collision.CollRect(rect)) {
+                switch (collision.CollDir(rect)) {
+                    case xPos:
+                        pos.x = rect.getPos().x - collision.rect.getSize().x;
+                        if (dx > 0) {
+                            dx = 0;
+                        }
+                        // System.out.println("XPOS");
+                        break;
+                    case xNeg:
+                        pos.x = rect.getPos().x + rect.getSize().x;
+                        if (dx < 0) {
+                            dx = 0;
+                        }
+                        // System.out.println("XNEG");
+                        break;
+                    case yPos:
+                        pos.y = rect.getPos().y - collision.rect.getSize().y;
+                        if (dy > 0) {
+                            dy = 0;
+                        }
+                        falling = false;
+                        // System.out.println("YPOS");
+                        break;
+                    case yNeg:
+                        pos.y = rect.getPos().y + rect.getSize().y;
+                        if (dy > 0) {
+                            dy = 0;
+                        }
+                        // System.out.println("YNEG");
+                        break;
+                    case noColl:
+                        // System.out.println("NOCOLL");
+                        dy = 0;
+                        dx = 0;
+                        break;
+                }
+                
+                count++;
+            }
+            if (count >= 9) {
+                break;
+            }
+        }
+        
+        
     }
     
     private void setDir() {
@@ -128,6 +223,10 @@ public class Player extends Entity {
         right = key.right.down;
         left = key.left.down;
         if (key.space.down && !falling) {
+            if (!jumping) {
+                System.out.println("Resetet Start");
+                start = new Vector2f(pos);
+            }
             jumping = true;
         }
     }

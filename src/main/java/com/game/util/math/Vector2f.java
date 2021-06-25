@@ -45,4 +45,9 @@ public class Vector2f {
         this.y = this.y * multiplier;
         return this;
     }
+    
+    public Vector2f normalize() {
+        this.mul((float) Math.sqrt(this.x * this.x + this.y + this.y));
+        return this;
+    }
 }

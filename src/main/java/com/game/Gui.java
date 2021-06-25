@@ -12,6 +12,12 @@ public class Gui extends JFrame {
         init();
     }
     
+    public static void close() {
+        gui.setVisible(false);
+        gui.dispose();
+        System.exit(0);
+    }
+    
     private void init() {
         gui = this;
         setTitle("2D Platformer");
@@ -22,13 +28,6 @@ public class Gui extends JFrame {
         pack();
         setResizable(false);
         setLocationRelativeTo(null);
-        setIgnoreRepaint(true);
         setVisible(true);
-    }
-    
-    public static void close() {
-        gui.setVisible(false);
-        gui.dispose();
-        System.exit(0);
     }
 }

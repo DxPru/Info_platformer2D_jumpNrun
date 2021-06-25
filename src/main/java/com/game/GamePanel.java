@@ -78,6 +78,7 @@ public class GamePanel extends JPanel implements Runnable {
         
         float dt = 0.0F;
         float lastUpdate = System.nanoTime();
+        float now;
         
         while (running) {
             
@@ -86,21 +87,24 @@ public class GamePanel extends JPanel implements Runnable {
             this.render();
             this.draw();
             
-            double now = System.nanoTime();
-            while (now - lastUpdate < TTBR) {
-                Thread.yield();
-                
-                try {
-                    Thread.sleep(1);
-                } catch (Exception e) {
-                    System.out.println("ERROR: yielding Thread");
-                }
-                
-                now = System.nanoTime();
-            }
             
-            dt = System.nanoTime() - lastUpdate;
-            lastUpdate = System.nanoTime();
+            // shit slows game to 20fps
+            //while (now - lastUpdate < TTBR) {
+            //    Thread.yield();
+            //
+            //    try {
+            //        Thread.sleep(1);
+            //    } catch (InterruptedException e) {
+            //        System.out.println("ERROR: yielding Thread");
+            //        e.printStackTrace();
+            //    }
+            //
+            //    now = System.nanoTime();
+            //}
+            
+            now = System.nanoTime();
+            dt = now - lastUpdate;
+            lastUpdate = now;
             frameCount = (int) (1000000000 / dt);
             
             if (oldFrameCount < frameCount - 5 || oldFrameCount > frameCount + 5) {
@@ -124,12 +128,12 @@ public class GamePanel extends JPanel implements Runnable {
             g.setColor(new Color(66, 134, 244));
             g.fillRect(0, 0, width, height);
             this.gamemanager.render(g);
-            g.drawString("FPS: " + frameCount, 10, 20);
+            //g.drawString("FPS: " + frameCount, 10, 20);
         }
     }
     
     public void draw() {
-        Graphics g2 = (Graphics) this.getGraphics();
+        Graphics g2 = this.getGraphics();
         g2.drawImage(img, 0, 0, width, height, null);
         g2.dispose();
     }
