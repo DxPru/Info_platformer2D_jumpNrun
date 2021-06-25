@@ -30,7 +30,7 @@ public class Player extends Entity {
     private void move(float dt) {
         float dtSec = (dt / 1000000000);
         float scoreMult = (float) PlayState.getScore() / 20f;
-        float flyMult = 0.35f;
+        float flyMult = 0.25f;
         
         if (jumping) {
             System.out.println(start.y);
@@ -155,6 +155,7 @@ public class Player extends Entity {
                         if (dy > 0) {
                             dy = 0;
                         }
+                        jumping = false;
                         // System.out.println("YNEG");
                         break;
                     case noColl:

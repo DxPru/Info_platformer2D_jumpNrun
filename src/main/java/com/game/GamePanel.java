@@ -107,7 +107,7 @@ public class GamePanel extends JPanel implements Runnable {
             lastUpdate = now;
             frameCount = (int) (1000000000 / dt);
             
-            if (oldFrameCount < frameCount - 5 || oldFrameCount > frameCount + 5) {
+            if ((oldFrameCount < frameCount - 5 || oldFrameCount > frameCount + 5) && (int) dt != 0) {
                 System.out.println("New DeltaTime: " + (int) dt + " | " + frameCount);
                 oldFrameCount = frameCount;
             }

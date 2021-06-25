@@ -8,3 +8,4 @@ programmed in **Intellij idea von jetbrains**
 
 **`src/main/com/java/com/game/util/data`:** Liste und Datamanager für Speichern überprüfen und lesen der Daten
 
+**[latest Release](https://github.com/DxPru/Info_platformer2D_jumpNrun/releases)**
