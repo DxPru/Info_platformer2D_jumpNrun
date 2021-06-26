@@ -45,6 +45,10 @@ public class Collision {
         return this.rect.getPos().y <= y && this.rect.getPos().y + this.rect.getSize().y >= y;
     }
     
+    public boolean CollYPos(float y) {
+        return this.rect.getPos().y + this.rect.getSize().y >= y;
+    }
+    
     public boolean CollVf(Vector2f pos) {
         return this.CollX(pos.x) && this.CollY(pos.y);
     }
@@ -61,10 +65,10 @@ public class Collision {
             } else if (-vec.x > Math.abs(vec.y)) {
                 return CollisionType.xNeg;
             }
-        } else {
-            if (vec.y > Math.abs(vec.x)) {
+        } else if (Math.abs(vec.x) < Math.abs(vec.y)) {
+            if (-vec.y > Math.abs(vec.x)) {
                 return CollisionType.yPos;
-            } else if (-vec.y > Math.abs(vec.x)) {
+            } else if (vec.y > Math.abs(vec.x)) {
                 return CollisionType.yNeg;
             }
         }

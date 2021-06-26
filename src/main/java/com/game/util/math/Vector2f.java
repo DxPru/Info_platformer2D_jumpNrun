@@ -41,13 +41,21 @@ public class Vector2f {
     }
     
     public Vector2f mul(float multiplier) {
-        this.x = this.x * multiplier;
-        this.y = this.y * multiplier;
+        this.x *= multiplier;
+        this.y *= multiplier;
         return this;
     }
     
     public Vector2f normalize() {
-        this.mul((float) Math.sqrt(this.x * this.x + this.y + this.y));
+        this.mul(1 / abs());
         return this;
+    }
+    
+    public float abs() {
+        return (float) Math.sqrt((this.x * this.x) + (this.y * this.y));
+    }
+    
+    public void print() {
+        System.out.println("V2f: " + x + " | " + y);
     }
 }

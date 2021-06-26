@@ -7,7 +7,7 @@ import com.game.util.math.Vector2f;
 import com.game.util.physics.Rect;
 
 public class Block {
-    public Rect rect;
+    private Rect rect;
     private final Vector2f pos;
     private final Sprite sprite;
     private boolean del = false;
@@ -29,10 +29,18 @@ public class Block {
     }
     
     public RenderedImage getRenderedImage() {
-        return new RenderedImage(this.sprite.getImg(), this.pos, this.sprite.getSize());
+        if (Camera.getCollision().CollRect(rect)) {
+            return new RenderedImage(this.sprite.getImg(), this.pos, this.sprite.getSize());
+        }
+        return null;
     }
     
     public boolean getDel() {
         return del;
+    }
+    
+    public Rect getRect() {
+        return rect;
+        // TODO make more efficient like getRenderedImage()
     }
 }

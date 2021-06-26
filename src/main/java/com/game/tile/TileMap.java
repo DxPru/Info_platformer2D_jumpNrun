@@ -44,16 +44,18 @@ public class TileMap {
     
         for (Block block : del) {
             tiles.remove(block);
-        
-            System.out.println("Removed Block");
         }
     }
     
-    public ArrayList<RenderedImage> getRenderedImage() {
+    public ArrayList<RenderedImage> getRenderedImages() {
         ArrayList<RenderedImage> tmp = new ArrayList<RenderedImage>();
-        
+        RenderedImage temp;
+    
         for (Block block : this.tiles) {
-            tmp.add(block.getRenderedImage());
+            temp = block.getRenderedImage();
+            if (temp != null) {
+                tmp.add(block.getRenderedImage());
+            }
         }
         
         return tmp;
@@ -67,7 +69,7 @@ public class TileMap {
         Stack<Rect> rects = new Stack<Rect>();
         
         for (Block block : tiles) {
-            rects.add(block.rect);
+            rects.add(block.getRect());
         }
         
         return rects;

@@ -1,7 +1,7 @@
 package com.game.util.data;
 
 public class DataManager {
-    
+    // TODO Saving The score plus login data
     private final List playerData = new List();
     
     public boolean isValid(String name) {

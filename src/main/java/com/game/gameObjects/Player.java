@@ -20,7 +20,7 @@ public class Player extends Entity {
         acc = 0.1f;
         accFall = 0.1f;
         accJump = 0.15f;
-        deacc = 0.1f;
+        deacc = 0.15f;
         maxSpeed = 0.0125f;
         maxFallSpeed = 0.02f;
         maxJumpSpeed = 0.02f;
@@ -29,13 +29,12 @@ public class Player extends Entity {
     
     private void move(float dt) {
         float dtSec = (dt / 1000000000);
-        float scoreMult = (float) PlayState.getScore() / 20f;
+        float scoreMult = (float) PlayState.getScore() / 2000f;
+        float scoreSpeedMult = scoreMult / 10000f;
         float flyMult = 0.25f;
-        
+    
         if (jumping) {
-            System.out.println(start.y);
             if (start.y - pos.y >= jumpHeight) {
-                System.out.println("Jumping false");
                 jumping = false;
             } else {
                 dy -= accJump * dtSec;
@@ -52,8 +51,8 @@ public class Player extends Entity {
         if (!falling) {
             if (right) {
                 dx += (acc + scoreMult) * dtSec;
-                if (dx > maxSpeed) {
-                    dx = maxSpeed;
+                if (dx > (maxSpeed + scoreSpeedMult)) {
+                    dx = (maxSpeed + scoreSpeedMult);
                 }
             } else {
                 if (dx > 0) {
@@ -65,8 +64,8 @@ public class Player extends Entity {
             }
             if (left) {
                 dx -= (acc + scoreMult) * dtSec;
-                if (dx < -maxSpeed) {
-                    dx = -maxSpeed;
+                if (dx < -(maxSpeed + scoreSpeedMult)) {
+                    dx = -(maxSpeed + scoreSpeedMult);
                 }
             } else {
                 if (dx < 0) {
@@ -79,8 +78,8 @@ public class Player extends Entity {
         } else {
             if (right) {
                 dx += flyMult * (acc + scoreMult) * dtSec;
-                if (dx > maxSpeed) {
-                    dx = maxSpeed;
+                if (dx > (maxSpeed + scoreSpeedMult)) {
+                    dx = (maxSpeed + scoreSpeedMult);
                 }
             } else {
                 if (dx > 0) {
@@ -92,8 +91,8 @@ public class Player extends Entity {
             }
             if (left) {
                 dx -= flyMult * (acc + scoreMult) * dtSec;
-                if (dx < -maxSpeed) {
-                    dx = -maxSpeed;
+                if (dx < -(maxSpeed + scoreSpeedMult)) {
+                    dx = -(maxSpeed + scoreSpeedMult);
                 }
             } else {
                 if (dx < 0) {
@@ -107,11 +106,12 @@ public class Player extends Entity {
     }
     
     private void collision() {
-        
-        if (collision.CollY(floor_height)) {
+    
+        if (collision.CollYPos(floor_height)) {
             if (dy >= 0.0f) {
                 dy = 0.0f;
                 pos.y = floor_height - collision.rect.getSize().y;
+                collision.rect.getPos().y = pos.y;
             }
             falling = false;
         } else {
@@ -130,38 +130,40 @@ public class Player extends Entity {
                 switch (collision.CollDir(rect)) {
                     case xPos:
                         pos.x = rect.getPos().x - collision.rect.getSize().x;
+                        collision.rect.getPos().x = pos.x;
                         if (dx > 0) {
-                            dx = 0;
+                            dx *= -0.2;
                         }
                         // System.out.println("XPOS");
                         break;
                     case xNeg:
                         pos.x = rect.getPos().x + rect.getSize().x;
+                        collision.rect.getPos().x = pos.x;
                         if (dx < 0) {
-                            dx = 0;
+                            dx *= -0.2;
                         }
                         // System.out.println("XNEG");
                         break;
                     case yPos:
+                        pos.y = rect.getPos().y + rect.getSize().y;
+                        collision.rect.getPos().y = pos.y;
+                        if (dy < 0) {
+                            dy = 0;
+                        }
+                        jumping = false;
+                        //System.out.println("YPOS");
+                        break;
+                    case yNeg:
                         pos.y = rect.getPos().y - collision.rect.getSize().y;
+                        collision.rect.getPos().y = pos.y;
                         if (dy > 0) {
                             dy = 0;
                         }
                         falling = false;
-                        // System.out.println("YPOS");
-                        break;
-                    case yNeg:
-                        pos.y = rect.getPos().y + rect.getSize().y;
-                        if (dy > 0) {
-                            dy = 0;
-                        }
-                        jumping = false;
                         // System.out.println("YNEG");
                         break;
                     case noColl:
-                        // System.out.println("NOCOLL");
-                        dy = 0;
-                        dx = 0;
+                        System.out.println("NOCOLL");
                         break;
                 }
                 
@@ -225,7 +227,6 @@ public class Player extends Entity {
         left = key.left.down;
         if (key.space.down && !falling) {
             if (!jumping) {
-                System.out.println("Resetet Start");
                 start = new Vector2f(pos);
             }
             jumping = true;

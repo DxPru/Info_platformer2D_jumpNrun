@@ -17,17 +17,15 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 public class TileManager {
-    private static final Stack<Integer[][]> patterns = new Stack<Integer[][]>();
-    private static String filePath;
-    private static int tileWidth, tileHeight, width, height;
-    private final ArrayList<TileMap> maps = new ArrayList<TileMap>();
+    private final Stack<Integer[][]> patterns = new Stack<Integer[][]>();
+    private String filePath;
+    private int tileWidth, tileHeight, width, height;
+    private ArrayList<TileMap> maps = new ArrayList<TileMap>();
     private int nextMapX;
     
     
     public TileManager(String mapPath, String filePath) {
-        Camera.updateProjection();
-        nextMapX = (int) Camera.getProjection()[1].x;
-        TileManager.filePath = filePath;
+        this.filePath = filePath;
         int layerCount;
         
         try {
@@ -76,6 +74,20 @@ public class TileManager {
             System.out.println("ERROR: TileManager " + mapPath + " loading failed");
             e.printStackTrace();
         }
+        init();
+    }
+    
+    private void init() {
+        maps = new ArrayList<TileMap>();
+        Camera.updateProjection();
+        nextMapX = (int) Camera.getProjection()[0].x;
+        addMap(0);
+        addRandomMap();
+        addRandomMap();
+    }
+    
+    public void reset() {
+        this.init();
     }
     
     public void removeTilemap(TileMap map) {
@@ -93,21 +105,17 @@ public class TileManager {
         
         for (TileMap x : del) {
             maps.remove(x);
-            System.out.println("Removed TileMap");
         }
         
         for (int i = maps.size(); i <= 2; i++) {
-            int random = (int) (Math.random() * patterns.size());
-            maps.add(new TileMap(filePath, nextMapX, patterns.get(random), tileWidth, tileHeight, width, height));
-            nextMapX += width * tileWidth;
-            System.out.println("Added Tilemap");
+            addRandomMap();
         }
     }
     
-    public ArrayList<RenderedImage> getRenderedImage() {
+    public ArrayList<RenderedImage> getRenderedImages() {
         ArrayList<RenderedImage> tmp = new ArrayList<RenderedImage>();
         for (TileMap map : maps) {
-            tmp.addAll(map.getRenderedImage());
+            tmp.addAll(map.getRenderedImages());
         }
         
         return tmp;
@@ -121,5 +129,17 @@ public class TileManager {
         }
         
         return rect;
+    }
+    
+    private void addMap(int pattern) {
+        if (pattern <= patterns.size() && pattern >= 0) {
+            maps.add(new TileMap(filePath, nextMapX, patterns.get(pattern), tileWidth, tileHeight, width, height));
+            nextMapX += width * tileWidth;
+        }
+    }
+    
+    private void addRandomMap() {
+        int random = (int) (Math.random() * (patterns.size() - 1)) + 1;
+        addMap(random);
     }
 }

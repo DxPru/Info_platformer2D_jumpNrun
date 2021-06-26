@@ -57,13 +57,15 @@ public class GamePanel extends JPanel implements Runnable {
     // initializing the Game
     public void init() {
         running = true;
-        
+    
         img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         g = (Graphics2D) img.getGraphics();
-        
+        // preloading the font
+        g.setFont(new Font("Ariel", Font.BOLD, 36));
+    
         mouse = new MouseHandler(this);
         key = new KeyHandler(this);
-        
+    
         gamemanager = new GameManager();
     }
     
@@ -106,8 +108,8 @@ public class GamePanel extends JPanel implements Runnable {
             dt = now - lastUpdate;
             lastUpdate = now;
             frameCount = (int) (1000000000 / dt);
-            
-            if ((oldFrameCount < frameCount - 5 || oldFrameCount > frameCount + 5) && (int) dt != 0) {
+    
+            if ((oldFrameCount < frameCount - 2 || oldFrameCount > frameCount + 2) && (int) dt != 0) {
                 System.out.println("New DeltaTime: " + (int) dt + " | " + frameCount);
                 oldFrameCount = frameCount;
             }

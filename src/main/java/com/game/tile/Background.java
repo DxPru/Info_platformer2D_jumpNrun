@@ -27,13 +27,13 @@ public class Background {
         }
     }
     
-    public ArrayList<RenderedImage> getRenderedImage() {
+    public ArrayList<RenderedImage> getRenderedImages() {
         ArrayList<RenderedImage> tmp = new ArrayList<RenderedImage>();
-        
+    
         for (BG bg : backgrounds) {
             tmp.add(bg.getRenderedImage());
         }
-        
+    
         return tmp;
     }
     
@@ -43,10 +43,6 @@ public class Background {
     
     public void addBg() {
         backgrounds.push(new BG());
-    }
-    
-    public void genBackground(int count) {
-    
     }
     
     public class BG {
