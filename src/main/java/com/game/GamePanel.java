@@ -83,28 +83,28 @@ public class GamePanel extends JPanel implements Runnable {
         float now;
         
         while (running) {
-            
+    
             this.input(this.mouse, this.key);
             this.update(dt);
             this.render();
             this.draw();
-            
-            
-            // shit slows game to 20fps
-            //while (now - lastUpdate < TTBR) {
-            //    Thread.yield();
-            //
-            //    try {
-            //        Thread.sleep(1);
-            //    } catch (InterruptedException e) {
-            //        System.out.println("ERROR: yielding Thread");
-            //        e.printStackTrace();
-            //    }
-            //
-            //    now = System.nanoTime();
-            //}
-            
+    
+    
             now = System.nanoTime();
+            // TODO shit slows game to 20fps (change to timer)
+            while (now - lastUpdate < TTBR) {
+                Thread.yield();
+        
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    System.out.println("ERROR: yielding Thread");
+                    e.printStackTrace();
+                }
+        
+                now = System.nanoTime();
+            }
+    
             dt = now - lastUpdate;
             lastUpdate = now;
             frameCount = (int) (1000000000 / dt);

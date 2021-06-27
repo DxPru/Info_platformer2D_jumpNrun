@@ -40,7 +40,9 @@ public class Block {
     }
     
     public Rect getRect() {
-        return rect;
-        // TODO make more efficient like getRenderedImage()
+        if (Camera.getCollision().CollRect(rect)) {
+            return rect;
+        }
+        return null;
     }
 }

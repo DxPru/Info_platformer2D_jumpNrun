@@ -48,7 +48,7 @@ public class PlayState extends GameState {
         background.addBg();
         tilemanager = new TileManager("res/tilemaps/Block.xml", "res/spritesheets/Block.png");
         playerPath = "res/spritesheets/Player.png";
-        AssetPool.addSpriteSheet(playerPath, new SpriteSheet(AssetPool.getTexture(playerPath), 14, 1));
+        AssetPool.addSpriteSheet(playerPath, new SpriteSheet(AssetPool.getTexture(playerPath), 14, 14));
         gameObjects.add(new Player(new Vector2f(48f, 14f), playerPath));
     }
     

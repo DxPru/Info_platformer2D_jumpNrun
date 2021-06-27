@@ -15,7 +15,7 @@ public class Settings {
     public static final int WIDTH = 256;
     public static final int HEIGHT = 144;
     // Game speed config
-    public static final float GAME_FPS = 120.0f;
+    public static final float GAME_FPS = 60.0f;
     // Tile config
     public static final float TILE_SIZE = 16.0f;  // size of the individual Tiles
     public static final float SCALE = (((float) PX_WIDTH / (float) WIDTH) + ((float) PX_HEIGHT / (float) HEIGHT)) / 2; // scale off the individual tiles

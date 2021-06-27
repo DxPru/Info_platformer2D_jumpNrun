@@ -54,7 +54,7 @@ public class TileMap {
         for (Block block : this.tiles) {
             temp = block.getRenderedImage();
             if (temp != null) {
-                tmp.add(block.getRenderedImage());
+                tmp.add(temp);
             }
         }
         
@@ -67,9 +67,13 @@ public class TileMap {
     
     public Stack<Rect> getRects() {
         Stack<Rect> rects = new Stack<Rect>();
+        Rect rect;
         
         for (Block block : tiles) {
-            rects.add(block.getRect());
+            rect = block.getRect();
+            if (rect != null) {
+                rects.add(rect);
+            }
         }
         
         return rects;

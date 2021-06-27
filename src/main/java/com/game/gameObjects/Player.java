@@ -17,7 +17,7 @@ public class Player extends Entity {
         super(pos, spritePath);
         start = new Vector2f(pos);
         animation.setDelay(100);
-        acc = 0.1f;
+        acc = 0.075f;
         accFall = 0.1f;
         accJump = 0.15f;
         deacc = 0.15f;
@@ -132,7 +132,7 @@ public class Player extends Entity {
                         pos.x = rect.getPos().x - collision.rect.getSize().x;
                         collision.rect.getPos().x = pos.x;
                         if (dx > 0) {
-                            dx *= -0.2;
+                            dx *= -0.4; // Bounce factor
                         }
                         // System.out.println("XPOS");
                         break;
@@ -140,7 +140,7 @@ public class Player extends Entity {
                         pos.x = rect.getPos().x + rect.getSize().x;
                         collision.rect.getPos().x = pos.x;
                         if (dx < 0) {
-                            dx *= -0.2;
+                            dx *= -0.4; // Bounce factor
                         }
                         // System.out.println("XNEG");
                         break;
