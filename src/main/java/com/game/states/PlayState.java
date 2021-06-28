@@ -17,7 +17,7 @@ public class PlayState extends GameState {
     private static float score = 0;
     private ArrayList<GameObject> gameObjects;
     private Background background;
-    private String bgPath, playerPath;
+    private String bgPath, playerPath, overlayPath, fontPath, colorname;
     private float dx = 0.0f;
     
     public PlayState(GameManager gamemanager) {
@@ -38,17 +38,23 @@ public class PlayState extends GameState {
     
     @Override
     protected void init() {
+        playerPath = "res/spritesheets/Player.png";
+        bgPath = "res/spritesheets/Background.png";
+        overlayPath = "res/spritesheets/overlay.png";
+        fontPath = "res/fonts/Minecraft.ttf";
+        colorname = "lightbrown";
+        AssetPool.addSpriteSheet(bgPath, new SpriteSheet(AssetPool.getTexture(bgPath), 256, 146));
+        AssetPool.addSpriteSheet(playerPath, new SpriteSheet(AssetPool.getTexture(playerPath), 14, 14));
+        AssetPool.getTexture(overlayPath);
+        AssetPool.addFont(fontPath, Font.TRUETYPE_FONT, 6f * Settings.SCALE);
+        AssetPool.addColor(colorname, new Color(214, 157, 100));
         Camera.setPosition(0, 0);
         score = 0;
         gameObjects = new ArrayList<GameObject>();
-        bgPath = "res/spritesheets/Background.png";
-        AssetPool.addSpriteSheet(bgPath, new SpriteSheet(AssetPool.getTexture(bgPath), 256, 146));
         background = new Background(bgPath);
         background.addBg();
         background.addBg();
         tilemanager = new TileManager("res/tilemaps/Block.xml", "res/spritesheets/Block.png");
-        playerPath = "res/spritesheets/Player.png";
-        AssetPool.addSpriteSheet(playerPath, new SpriteSheet(AssetPool.getTexture(playerPath), 14, 14));
         gameObjects.add(new Player(new Vector2f(48f, 14f), playerPath));
     }
     
@@ -68,7 +74,7 @@ public class PlayState extends GameState {
     @Override
     public void update(float dt) {
         score += (dt / 1000000) * 0.0002;
-        if (dx < 0.045f + (score / 1500)) {
+        if (dx < 0.035f + (score / 1500)) {
             dx += 0.00001f * (dt / 1000000);
         }
         Camera.movePosition(dx * (dt / 1000000), 0.0f);
@@ -97,8 +103,11 @@ public class PlayState extends GameState {
         for (GameObject gameObject : gameObjects) {
             renderedImages.add(gameObject.getRenderedImage());
         }
+        renderedImages.add(new RenderedImage(AssetPool.getTexture(overlayPath).getImg(), new Vector2f(), AssetPool.getTexture(overlayPath).getSize(), true));
+    
         renderer.render(g, renderedImages);
-        g.setFont(new Font("Ariel", Font.BOLD, 36));
-        g.drawString(Integer.toString((int) score), 100, 40);
+        g.setColor(AssetPool.getColor(colorname));
+        g.setFont(AssetPool.getFont(fontPath));
+        g.drawString("Score: " + (int) score, (int) (36 * Settings.SCALE), (int) (9 * Settings.SCALE));
     }
 }

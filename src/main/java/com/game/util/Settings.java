@@ -9,8 +9,9 @@ import java.awt.*;
 public class Settings {
     private static final Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
     // screen config
-    public static final int PX_WIDTH = (int) ((float) dim.width * 0.8f); // screen width should be a 16:9 ratio
-    public static final int PX_HEIGHT = (int) (((float) dim.width / 16) * 9 * 0.8f); // screen height
+    private static final float PART_OF_SCREEN = 0.8f;
+    public static final int PX_WIDTH = (int) ((float) dim.width * PART_OF_SCREEN); // screen width should be a 16:9 ratio
+    public static final int PX_HEIGHT = (int) (((float) dim.width / 16) * 9 * PART_OF_SCREEN); // screen height
     public static final boolean FULLSCREEN = false;
     public static final int WIDTH = 256;
     public static final int HEIGHT = 144;

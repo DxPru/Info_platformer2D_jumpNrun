@@ -14,7 +14,6 @@ import java.util.ArrayList;
 
 public class StartState extends GameState {
     private Animation animation;
-    private boolean firsttime = true;
     
     public StartState(GameManager gamemanager) {
         super(gamemanager);
@@ -45,13 +44,6 @@ public class StartState extends GameState {
     
     @Override
     public void render(Graphics2D g) {
-        if (!firsttime) { // run after the first frame to prevent a white screen on startup
-            // no idea why but needed to prevent a lag on the first start of the playstate
-            g.setFont(new Font("Ariel", Font.BOLD, 36));
-            g.drawString(Integer.toString((int) 10), 100, 40);
-        } else {
-            firsttime = false;
-        }
         ArrayList<RenderedImage> ri = new ArrayList<RenderedImage>();
         ri.add(0, new RenderedImage(animation.getSprite().getImg(), new Vector2f(), animation.getSprite().getSize()));
         renderer.render(g, ri);

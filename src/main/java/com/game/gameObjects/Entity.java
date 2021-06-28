@@ -15,6 +15,7 @@ public abstract class Entity extends GameObject {
     protected boolean left = false;
     protected boolean falling = false;
     protected boolean jumping = false;
+    protected boolean landing = false;
     
     protected float dx;
     protected float dy;

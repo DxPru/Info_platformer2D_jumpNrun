@@ -12,6 +12,7 @@ import java.util.Stack;
 public class Player extends Entity {
     private Vector2f start;
     private final float floor_height = Settings.FLOOR_HEIGHT;
+    private boolean high_hop = true;
     
     public Player(Vector2f pos, String spritePath) {
         super(pos, spritePath);
@@ -34,8 +35,9 @@ public class Player extends Entity {
         float flyMult = 0.25f;
     
         if (jumping) {
-            if (start.y - pos.y >= jumpHeight) {
+            if ((start.y - pos.y >= jumpHeight && high_hop) || (start.y - pos.y >= jumpHeight / 2 && !high_hop)) {
                 jumping = false;
+                landing = true;
             } else {
                 dy -= accJump * dtSec;
                 if (-dy > maxJumpSpeed) {
@@ -132,7 +134,7 @@ public class Player extends Entity {
                         pos.x = rect.getPos().x - collision.rect.getSize().x;
                         collision.rect.getPos().x = pos.x;
                         if (dx > 0) {
-                            dx *= -0.4; // Bounce factor
+                            dx *= -0.3; // Bounce factor
                         }
                         // System.out.println("XPOS");
                         break;
@@ -140,7 +142,7 @@ public class Player extends Entity {
                         pos.x = rect.getPos().x + rect.getSize().x;
                         collision.rect.getPos().x = pos.x;
                         if (dx < 0) {
-                            dx *= -0.4; // Bounce factor
+                            dx *= -0.3; // Bounce factor
                         }
                         // System.out.println("XNEG");
                         break;
@@ -151,6 +153,7 @@ public class Player extends Entity {
                             dy = 0;
                         }
                         jumping = false;
+                        landing = true;
                         //System.out.println("YPOS");
                         break;
                     case yNeg:
@@ -225,11 +228,15 @@ public class Player extends Entity {
     public void input(MouseHandler mouse, KeyHandler key) {
         right = key.right.down;
         left = key.left.down;
-        if (key.space.down && !falling) {
+        if (key.space.down && !falling && !landing) {
             if (!jumping) {
                 start = new Vector2f(pos);
+                jumping = true;
             }
-            jumping = true;
+            high_hop = true;
+        } else if (!key.space.down) {
+            high_hop = false;
+            landing = false;
         }
     }
     

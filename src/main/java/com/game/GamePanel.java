@@ -60,8 +60,6 @@ public class GamePanel extends JPanel implements Runnable {
     
         img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         g = (Graphics2D) img.getGraphics();
-        // preloading the font
-        g.setFont(new Font("Ariel", Font.BOLD, 36));
     
         mouse = new MouseHandler(this);
         key = new KeyHandler(this);

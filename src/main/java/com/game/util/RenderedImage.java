@@ -8,11 +8,19 @@ public class RenderedImage {
     private final BufferedImage img;
     private final Vector2f pos;
     private final Vector2f size;
+    private boolean uiElement = false;
     
     public RenderedImage(BufferedImage img, Vector2f pos, Vector2f size) {
         this.img = img;
         this.pos = pos;
         this.size = size;
+    }
+    
+    public RenderedImage(BufferedImage img, Vector2f pos, Vector2f size, boolean uiElement) {
+        this.img = img;
+        this.pos = pos;
+        this.size = size;
+        this.uiElement = uiElement;
     }
     
     public BufferedImage getImg() {
@@ -25,5 +33,9 @@ public class RenderedImage {
     
     public Vector2f getSize() {
         return size;
+    }
+    
+    public boolean isUiElement() {
+        return uiElement;
     }
 }
