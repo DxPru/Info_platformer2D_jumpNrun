@@ -14,9 +14,10 @@ public class KeyHandler implements KeyListener {
     public Key left = new Key();
     public Key right = new Key();
     public Key space = new Key();
-    public Key menu = new Key();
     public Key enter = new Key();
     public Key escape = new Key();
+    private boolean typing = false;
+    private String string = "";
     
     public KeyHandler(GamePanel game) {
         game.addKeyListener(this);
@@ -26,6 +27,7 @@ public class KeyHandler implements KeyListener {
         for (Key key : keys) {
             key.reset();
         }
+        string = "";
     }
     
     public void tick() {
@@ -44,6 +46,17 @@ public class KeyHandler implements KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE) escape.toggle(pressed);
     }
     
+    public void setTyping(boolean typing) {
+        this.typing = typing;
+        if (!typing) {
+            string = "";
+        }
+    }
+    
+    public String getString() {
+        return string.strip();
+    }
+    
     @Override
     public void keyTyped(KeyEvent e) {
         // Do nothing
@@ -52,6 +65,21 @@ public class KeyHandler implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         toggle(e, true);
+        if (typing) {
+            int code = e.getKeyCode();
+            if ((code >= 65 && code <= 90) || (code >= 97 && code <= 122) || (code >= 48 && code <= 57)) {
+                string += e.getKeyChar();
+            } else if (code == 8) {
+                if (string.length() <= 1) {
+                    string = "";
+                } else {
+                    string = string.substring(0, string.length() - 1);
+                }
+            } else if(code == 32) {
+                string += ' ';
+            }
+            System.out.println(e.getKeyCode());
+        }
     }
     
     @Override

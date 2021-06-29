@@ -1,5 +1,7 @@
 package com.game.util.data;
 
+import java.util.Stack;
+
 public class Knot {
     private final PlayerData playerData;
     private Knot follower;
@@ -30,5 +32,16 @@ public class Knot {
                 return null;
             }
         }
+    }
+    
+    public Stack<PlayerData> getData() {
+        Stack<PlayerData> tmp = new Stack<PlayerData>();
+        tmp.add(playerData);
+        
+        if (follower != null) {
+            tmp.addAll(follower.getData());
+        }
+        
+        return tmp;
     }
 }

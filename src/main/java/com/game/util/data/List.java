@@ -1,5 +1,7 @@
 package com.game.util.data;
 
+import java.util.Stack;
+
 public class List {
     public Knot start;
     
@@ -33,6 +35,13 @@ public class List {
         } else {
             return null;
         }
+    }
+    
+    public Stack<PlayerData> getData() {
+        if (start != null) {
+            return start.getData();
+        }
+        return null;
     }
     
 }

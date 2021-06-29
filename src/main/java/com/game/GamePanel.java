@@ -95,7 +95,6 @@ public class GamePanel extends JPanel {
             g.setColor(new Color(66, 134, 244));
             g.fillRect(0, 0, width, height);
             this.gamemanager.render(g);
-            //g.drawString("FPS: " + frameCount, 10, 20);
         }
     }
     

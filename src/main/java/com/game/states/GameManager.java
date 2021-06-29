@@ -9,6 +9,7 @@ import com.game.util.Camera;
 import com.game.util.KeyHandler;
 import com.game.util.MouseHandler;
 import com.game.util.Settings;
+import com.game.util.data.DataManager;
 
 import java.awt.*;
 import java.util.Stack;
@@ -16,10 +17,15 @@ import java.util.Stack;
 public class GameManager {
     private static Stack<GameState> states;
     private static GameManager instance;
+    private DataManager data;
+    private String loginname = "Username";
+    private int highScore = 0;
     
     public GameManager() {
         states = new Stack<GameState>();
         instance = this;
+        
+        data = new DataManager();
         
         states.add(new PlayState(this)); // loading PlayState in preparation
         states.add(new MenuState(this)); // preloading Menustate
@@ -31,10 +37,12 @@ public class GameManager {
     }
     
     public void remove(int state) {
+        states.get(state).save();
         states.remove(state);
     }
     
     public void pop() {
+        states.lastElement().save();
         states.pop();
     }
     
@@ -82,5 +90,49 @@ public class GameManager {
     
     public void render(Graphics2D g) {
         states.lastElement().render(g);
+    }
+    
+    public GameState getGameState(int index) {
+        return  states.get(index);
+    }
+    
+    public DataManager getData() {
+        return data;
+    }
+    
+    public void setLoginname(String name) {
+        loginname = name;
+        data.insertPlayer(name);
+        highScore = data.getHighScore(name);
+    }
+    
+    public void setScore(int score) {
+        highScore = score;
+        if (score > data.getHighScore(loginname)) {
+            data.setHighScore(loginname, score);
+        }
+    }
+    
+    public void save() {
+        for (GameState state : states) {
+            state.save();
+        }
+        data.save();
+    }
+    
+    public int getHighScore() {
+        return highScore;
+    }
+    
+    public void setDisplayname(String displayname) {
+        loginname = displayname;
+    }
+    
+    public String getLoginname() {
+        return loginname;
+    }
+    
+    public boolean isNameValid() {
+        return data.isValid(loginname);
     }
 }

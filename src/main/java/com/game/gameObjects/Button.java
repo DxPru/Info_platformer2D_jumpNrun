@@ -13,7 +13,8 @@ public abstract class Button extends GameObject {
     private final int spriteYPos;
     protected GameManager gameManager;
     private int spriteXPos;
-    private boolean focused;
+    protected boolean focused;
+    public boolean done = true;
     
     public Button(Vector2f pos, String spritePath, int spritePos, GameManager gameManager) {
         super(pos, spritePath);

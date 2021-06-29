@@ -24,4 +24,8 @@ public class PlayerData {
     public void setHighScore(int highScore) {
         this.highScore = highScore;
     }
+    
+    public String getName() {
+        return name;
+    }
 }

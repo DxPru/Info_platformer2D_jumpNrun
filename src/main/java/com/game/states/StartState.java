@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 public class StartState extends GameState {
     private Animation animation;
+    private boolean loaded = false;
     
     public StartState(GameManager gamemanager) {
         super(gamemanager);
@@ -34,6 +35,10 @@ public class StartState extends GameState {
         animation.update(dt);
         if (animation.hasPlayed()) {
             gamemanager.pop();
+        }
+        if (!loaded && dt != 0.0f) {
+            gamemanager.getData().load();
+            loaded = true;
         }
     }
     

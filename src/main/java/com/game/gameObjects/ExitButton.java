@@ -11,6 +11,7 @@ public class ExitButton extends Button {
     
     @Override
     public void action() {
+        gameManager.save();
         Gui.close();
     }
 }
