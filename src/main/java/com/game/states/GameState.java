@@ -16,9 +16,14 @@ public abstract class GameState {
     
     public void reset() {
         this.init();
+        save();
     }
     
     protected abstract void init();
+    
+    public void save() {
+    
+    }
     
     public abstract void update(float dt);
     

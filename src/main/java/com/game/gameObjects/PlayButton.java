@@ -10,6 +10,8 @@ public class PlayButton extends Button {
     
     @Override
     public void action() {
-        gameManager.pop();
+        if (gameManager.isNameValid()) {
+            gameManager.pop();
+        }
     }
 }

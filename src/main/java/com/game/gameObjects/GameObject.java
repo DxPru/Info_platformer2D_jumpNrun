@@ -30,4 +30,8 @@ public abstract class GameObject {
     public SpriteSheet getSpriteSheet() {
         return AssetPool.getSpriteSheet(spritePath);
     }
+    
+    public Vector2f getPos() {
+        return pos;
+    }
 }

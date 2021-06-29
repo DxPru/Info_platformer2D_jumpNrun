@@ -26,14 +26,18 @@ public class PlayState extends GameState {
         init();
     }
     
-    // TODO add overlay
-    
     public static TileManager getTilemanager() {
         return tilemanager;
     }
     
     public static int getScore() {
         return (int) score;
+    }
+    
+    @Override
+    public void save() {
+        gamemanager.setScore((int) score);
+        System.out.println("Saved score");
     }
     
     @Override
@@ -60,6 +64,7 @@ public class PlayState extends GameState {
     
     @Override
     public void reset() {
+        save();
         Camera.setPosition(0, 0);
         score = 0;
         dx = 0.f;
@@ -69,12 +74,13 @@ public class PlayState extends GameState {
         background.addBg();
         tilemanager.reset();
         gameObjects.add(new Player(new Vector2f(48f, 14f), playerPath));
+        System.out.println("Reset");
     }
     
     @Override
     public void update(float dt) {
-        score += (dt / 1000000) * 0.0002;
-        if (dx < 0.035f + (score / 1500)) {
+        score += (dt / 1000000) * 0.00025;
+        if (dx < 0.04f + (score / 1500)) {
             dx += 0.00001f * (dt / 1000000);
         }
         Camera.movePosition(dx * (dt / 1000000), 0.0f);

@@ -10,6 +10,7 @@ cd release
 jdk-11.0.2\bin\java.exe -ea -jar Info_2DPlatformer.jar
 cd ..
 PAUSE
+del release\res\data\login.json
 7z a -tzip Info2D_platformer_win_x64.zip release
 PAUSE
 exit

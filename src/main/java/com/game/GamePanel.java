@@ -12,17 +12,28 @@ import com.game.util.KeyHandler;
 import com.game.util.MouseHandler;
 import com.game.util.Settings;
 
-import javax.swing.*;
+import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class GamePanel extends JPanel implements Runnable {
+public class GamePanel extends JPanel {
     
     public static int width, height;
     public static int oldFrameCount;
     public static int frameCount;
     
-    private Thread thread;
+    // Variables for the Game loop timing
+    private final float GAME_FPS = Settings.GAME_FPS;
+    private final float TTBR = 1000 / GAME_FPS; // TotalTimeBeforeRender
+    
+    private float dt = 0.0f;
+    private float lastUpdate = System.nanoTime();
+    private float now = System.nanoTime();
+    
+    private Timer timer;
+    private LoopTask timerTask;
     private boolean running = false;
     
     private BufferedImage img;
@@ -40,6 +51,7 @@ public class GamePanel extends JPanel implements Runnable {
         setPreferredSize(new Dimension(width, height));
         setFocusable(true);
         requestFocus();
+        init();
     }
     
     
@@ -48,9 +60,9 @@ public class GamePanel extends JPanel implements Runnable {
     public void addNotify() {
         super.addNotify();
         
-        if (thread == null) {
-            thread = new Thread(this, "GameThread");
-            thread.start();
+        if (timer == null) {
+            timer = new Timer();
+            timer.scheduleAtFixedRate(timerTask, 0, (long) TTBR);
         }
     }
     
@@ -65,53 +77,8 @@ public class GamePanel extends JPanel implements Runnable {
         key = new KeyHandler(this);
     
         gamemanager = new GameManager();
-    }
-    
-    // method is run at start of the GameThread
-    @Override
-    public void run() {
-        init();
         
-        // Variables for the Game loop timing
-        final float GAME_FPS = Settings.GAME_FPS;
-        final float TTBR = 1000000000 / GAME_FPS; // TotalTimeBeforeRender
-        
-        float dt = 0.0F;
-        float lastUpdate = System.nanoTime();
-        float now;
-        
-        while (running) {
-    
-            this.input(this.mouse, this.key);
-            this.update(dt);
-            this.render();
-            this.draw();
-    
-    
-            now = System.nanoTime();
-            // TODO shit slows game to 20fps (change to timer)
-            while (now - lastUpdate < TTBR) {
-                Thread.yield();
-        
-                try {
-                    Thread.sleep(1);
-                } catch (InterruptedException e) {
-                    System.out.println("ERROR: yielding Thread");
-                    e.printStackTrace();
-                }
-        
-                now = System.nanoTime();
-            }
-    
-            dt = now - lastUpdate;
-            lastUpdate = now;
-            frameCount = (int) (1000000000 / dt);
-    
-            if ((oldFrameCount < frameCount - 2 || oldFrameCount > frameCount + 2) && (int) dt != 0) {
-                System.out.println("New DeltaTime: " + (int) dt + " | " + frameCount);
-                oldFrameCount = frameCount;
-            }
-        }
+        timerTask = new LoopTask();
     }
     
     public void update(float dt) {
@@ -128,7 +95,6 @@ public class GamePanel extends JPanel implements Runnable {
             g.setColor(new Color(66, 134, 244));
             g.fillRect(0, 0, width, height);
             this.gamemanager.render(g);
-            //g.drawString("FPS: " + frameCount, 10, 20);
         }
     }
     
@@ -136,5 +102,27 @@ public class GamePanel extends JPanel implements Runnable {
         Graphics g2 = this.getGraphics();
         g2.drawImage(img, 0, 0, width, height, null);
         g2.dispose();
+    }
+    
+    class LoopTask extends TimerTask {
+    
+        @Override
+        public void run() {
+            input(mouse, key);
+            update(dt);
+            render();
+            draw();
+    
+    
+            now = System.nanoTime();
+            dt = now - lastUpdate;
+            lastUpdate = now;
+            frameCount = (int) (1000000000 / dt);
+    
+            if ((oldFrameCount < frameCount - 2 || oldFrameCount > frameCount + 2) && (int) dt != 0) {
+                System.out.println("New DeltaTime: " + (int) dt + " | " + frameCount);
+                oldFrameCount = frameCount;
+            }
+        }
     }
 }
