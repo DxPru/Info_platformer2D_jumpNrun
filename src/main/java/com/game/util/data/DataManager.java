@@ -78,8 +78,10 @@ public class DataManager {
         if (!inFile.equals("")) {
             PlayerData[] players = gson.fromJson(inFile, PlayerData[].class);
             
-            for (PlayerData data : players) {
-                playerData.insertFront(data);
+            if (players != null) {
+                for (PlayerData data : players) {
+                    playerData.insertFront(data);
+                }
             }
         }
     }
