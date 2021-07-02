@@ -13,27 +13,18 @@ public class Collision {
     }
     
     public boolean CollRect(Rect rect) {
-        return !(this.rect.getPos().y >= rect.getPos().y + rect.getSize().y ||
-                rect.getPos().y >= this.rect.getPos().y + this.rect.getSize().y ||
-                this.rect.getPos().x >= rect.getPos().x + rect.getSize().x ||
-                rect.getPos().x >= this.rect.getPos().x + this.rect.getSize().x);
+        return CollRectX(rect) && CollRectY(rect);
         
     }
     
-    public boolean CollRectXPos(Rect rect) {
-        return this.rect.getPos().x + (this.rect.getSize().x / 2) < rect.getPos().x + (rect.getSize().x / 2);
+    public boolean CollRectX(Rect rect) {
+        return this.rect.getPos().x < rect.getPos().x + rect.getSize().x &&
+                this.rect.getPos().x + this.rect.getSize().x > rect.getPos().x;
     }
     
-    public boolean CollRectXNeg(Rect rect) {
-        return this.rect.getPos().x + (this.rect.getSize().x / 2) > rect.getPos().x + (rect.getSize().x / 2);
-    }
-    
-    public boolean CollRectYPos(Rect rect) {
-        return this.rect.getPos().y + (this.rect.getSize().y / 2) < rect.getPos().y + (rect.getSize().y / 2);
-    }
-    
-    public boolean CollRectYNeg(Rect rect) {
-        return this.rect.getPos().y + (this.rect.getSize().y / 2) > rect.getPos().y + (rect.getSize().y / 2);
+    public boolean CollRectY(Rect rect) {
+        return this.rect.getPos().y < rect.getPos().y + rect.getSize().y &&
+                this.rect.getPos().y + this.rect.getSize().y > rect.getPos().y;
     }
     
     public boolean CollX(float x) {
@@ -56,14 +47,13 @@ public class Collision {
         Vector2f posRect = new Vector2f(rect.getPos()).add(new Vector2f(rect.getSize()).mul(0.5f));
         Vector2f posColl = new Vector2f(this.rect.getPos()).add(new Vector2f(this.rect.getSize()).mul(0.5f));
         Vector2f vec = new Vector2f(posRect).sub(posColl);
-        vec.normalize();
+        // vec.normalize(); // nicht unbedingt nötig aber leichter nach zu vollziehen
         
         // float tan = (float) Math.toDegrees(Math.tanh(vec.y / vec.x));
         // float len = vec.abs();
         // System.out.println(tan);
         
-        // TODO vec auf 2 Nachkommastellen runden
-        // Rundungs fehler in der 3. Nachkommastelle löst xNeg fälschlicher weise aus
+        // minimalste Collision unterschiedet sich nicht von maximaler Collision (float rundungsfehler lösen Collisionen im edge case aus)
         
         if (Math.abs(vec.x) > Math.abs(vec.y)) {
             if (vec.x > Math.abs(vec.y)) {
