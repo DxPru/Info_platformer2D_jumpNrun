@@ -8,7 +8,6 @@ public class Collision {
     public Collision() {
     }
     
-    // TODO Collisons Funktional Viel Bugs (Weirdchamp bugs)
     public Collision(Rect rect) {
         this.rect = rect;
     }
@@ -59,6 +58,13 @@ public class Collision {
         Vector2f vec = new Vector2f(posRect).sub(posColl);
         vec.normalize();
         
+        // float tan = (float) Math.toDegrees(Math.tanh(vec.y / vec.x));
+        // float len = vec.abs();
+        // System.out.println(tan);
+        
+        // TODO vec auf 2 Nachkommastellen runden
+        // Rundungs fehler in der 3. Nachkommastelle löst xNeg fälschlicher weise aus
+        
         if (Math.abs(vec.x) > Math.abs(vec.y)) {
             if (vec.x > Math.abs(vec.y)) {
                 return CollisionType.xPos;
@@ -67,9 +73,9 @@ public class Collision {
             }
         } else if (Math.abs(vec.x) < Math.abs(vec.y)) {
             if (-vec.y > Math.abs(vec.x)) {
-                return CollisionType.yPos;
-            } else if (vec.y > Math.abs(vec.x)) {
                 return CollisionType.yNeg;
+            } else if (vec.y > Math.abs(vec.x)) {
+                return CollisionType.yPos;
             }
         }
         

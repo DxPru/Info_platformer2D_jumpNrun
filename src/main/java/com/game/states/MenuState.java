@@ -16,7 +16,7 @@ public class MenuState extends GameState {
     private int focusedButton = 0;
     private String font;
     private String color;
-    // TODO Import login
+
     public MenuState(GameManager gamemanager) {
         super(gamemanager);
         renderer = new MenuView();

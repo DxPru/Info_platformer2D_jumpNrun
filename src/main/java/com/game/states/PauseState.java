@@ -17,7 +17,7 @@ public class PauseState extends GameState {
         renderer = new PauseView();
         init();
     }
-    // TODO Import State
+
     @Override
     protected void init() {
         overlayPath = "res/spritesheets/LoadingScreen.png";

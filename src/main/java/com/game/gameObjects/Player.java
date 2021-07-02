@@ -150,7 +150,7 @@ public class Player extends Entity {
                         }
                         // System.out.println("XNEG");
                         break;
-                    case yPos:
+                    case yNeg:
                         if (cheat) break;
                         pos.y = rect.getPos().y + rect.getSize().y;
                         collision.rect.getPos().y = pos.y;
@@ -159,16 +159,16 @@ public class Player extends Entity {
                         }
                         jumping = false;
                         landing = true;
-                        //System.out.println("YPOS");
+                        // System.out.println("YNEG");
                         break;
-                    case yNeg:
+                    case yPos:
                         pos.y = rect.getPos().y - collision.rect.getSize().y;
                         collision.rect.getPos().y = pos.y;
                         if (dy > 0) {
                             dy = 0;
                         }
                         falling = false;
-                        // System.out.println("YNEG");
+                        // System.out.println("YPOS");
                         break;
                     case noColl:
                         System.out.println("NOCOLL");

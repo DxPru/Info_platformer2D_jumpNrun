@@ -21,7 +21,7 @@ public class GameOverState extends GameState {
         renderer = new GameOverView();
         init();
     }
-    // TODO Import state
+    
     @Override
     protected void init() {
         gamemanager.save();
@@ -59,8 +59,8 @@ public class GameOverState extends GameState {
         
         g.setFont(AssetPool.getFont(fontPath).deriveFont(64f));
         g.setColor(AssetPool.getColor(color));
-        g.drawString("" + highscore, ((Settings.WIDTH / 2) + 24) * Settings.SCALE, ((Settings.HEIGHT / 2) + 30) * Settings.SCALE);
+        g.drawString("" + highscore, ((Settings.WIDTH / 2f) + 24) * Settings.SCALE, ((Settings.HEIGHT / 2f) + 30) * Settings.SCALE);
         g.setFont(AssetPool.getFont(fontPath).deriveFont(128f));
-        g.drawString("" + score, (Settings.WIDTH / 2) * Settings.SCALE, ((Settings.HEIGHT / 2) + 16) * Settings.SCALE);
+        g.drawString("" + score, (Settings.WIDTH / 2f) * Settings.SCALE, ((Settings.HEIGHT / 2f) + 16) * Settings.SCALE);
     }
 }
