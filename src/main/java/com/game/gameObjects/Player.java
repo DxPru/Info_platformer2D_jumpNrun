@@ -13,6 +13,7 @@ public class Player extends Entity {
     private Vector2f start;
     private final float floor_height = Settings.FLOOR_HEIGHT;
     private boolean high_hop = true;
+    private boolean cheat = false;
     
     public Player(Vector2f pos, String spritePath) {
         super(pos, spritePath);
@@ -26,6 +27,7 @@ public class Player extends Entity {
         maxFallSpeed = 0.02f;
         maxJumpSpeed = 0.02f;
         jumpHeight = 14f;
+        cheat = false;
     }
     
     private void move(float dt) {
@@ -131,6 +133,7 @@ public class Player extends Entity {
             if (collision.CollRect(rect)) {
                 switch (collision.CollDir(rect)) {
                     case xPos:
+                        if (cheat) break;
                         pos.x = rect.getPos().x - collision.rect.getSize().x;
                         collision.rect.getPos().x = pos.x;
                         if (dx > 0) {
@@ -139,6 +142,7 @@ public class Player extends Entity {
                         // System.out.println("XPOS");
                         break;
                     case xNeg:
+                        if (cheat) break;
                         pos.x = rect.getPos().x + rect.getSize().x;
                         collision.rect.getPos().x = pos.x;
                         if (dx < 0) {
@@ -147,6 +151,7 @@ public class Player extends Entity {
                         // System.out.println("XNEG");
                         break;
                     case yPos:
+                        if (cheat) break;
                         pos.y = rect.getPos().y + rect.getSize().y;
                         collision.rect.getPos().y = pos.y;
                         if (dy < 0) {
@@ -244,5 +249,9 @@ public class Player extends Entity {
     public RenderedImage getRenderedImage() {
         Sprite sprite = animation.getSprite();
         return new RenderedImage(sprite.getImg(), pos, sprite.getSize());
+    }
+    
+    public void setCheat(boolean cheat) {
+        this.cheat = cheat;
     }
 }

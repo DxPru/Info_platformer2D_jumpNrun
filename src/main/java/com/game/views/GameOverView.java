@@ -8,6 +8,6 @@ import java.util.ArrayList;
 public class GameOverView extends View {
     @Override
     public void render(Graphics2D g, ArrayList<RenderedImage> renderedImages) {
-    
+        renderer.render(g, renderedImages);
     }
 }

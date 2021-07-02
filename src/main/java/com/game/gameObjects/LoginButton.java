@@ -31,7 +31,10 @@ public class LoginButton extends Button{
         if (focused && !done) {
             key.setTyping(true);
             name = key.getString();
-            if (!name.equals("")) {
+            if (key.escape.clicked) {
+                done = true;
+            }
+            if (!name.equals("") || !done) {
                 gameManager.setDisplayname(name);
             } else {
                 gameManager.setDisplayname("Username");

@@ -54,7 +54,7 @@ public class KeyHandler implements KeyListener {
     }
     
     public String getString() {
-        return string.strip();
+        return string;
     }
     
     @Override
@@ -77,8 +77,10 @@ public class KeyHandler implements KeyListener {
                 }
             } else if(code == 32) {
                 string += ' ';
+            } else if (code == KeyEvent.VK_ESCAPE) {
+                toggle(e, true);
+                setTyping(false);
             }
-            System.out.println(e.getKeyCode());
         }
     }
     

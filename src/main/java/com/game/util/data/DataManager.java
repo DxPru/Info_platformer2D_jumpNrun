@@ -49,7 +49,12 @@ public class DataManager {
     }
     
     public void setHighScore(String name, int highScore) {
-        playerData.searchName(name).setHighScore(highScore);
+        if (!name.equals("")) {
+            if (!isValid(name)) {
+                insertPlayer(name);
+            }
+            playerData.searchName(name).setHighScore(highScore);
+        }
     }
     
     public void save() {

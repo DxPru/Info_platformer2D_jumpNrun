@@ -18,8 +18,10 @@ public class GameManager {
     private static Stack<GameState> states;
     private static GameManager instance;
     private DataManager data;
-    private String loginname = "Username";
+    private String loginname = "";
+    private String displayname = "Username";
     private int highScore = 0;
+    private int score = 0;
     
     public GameManager() {
         states = new Stack<GameState>();
@@ -104,11 +106,13 @@ public class GameManager {
         loginname = name;
         data.insertPlayer(name);
         highScore = data.getHighScore(name);
+        reset();
     }
     
     public void setScore(int score) {
-        highScore = score;
+        this.score = score;
         if (score > data.getHighScore(loginname)) {
+            highScore = score;
             data.setHighScore(loginname, score);
         }
     }
@@ -124,8 +128,16 @@ public class GameManager {
         return highScore;
     }
     
+    public int getScore() {
+        return  score;
+    }
+    
     public void setDisplayname(String displayname) {
-        loginname = displayname;
+        this.displayname = displayname;
+    }
+    
+    public String getDisplayname() {
+        return displayname;
     }
     
     public String getLoginname() {

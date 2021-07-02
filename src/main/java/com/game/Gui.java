@@ -3,6 +3,7 @@ package com.game;
 import com.game.util.Settings;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Gui extends JFrame {
     
@@ -20,10 +21,11 @@ public class Gui extends JFrame {
     
     private void init() {
         gui = this;
-        setTitle("2D Platformer");
+        setTitle("Pixel Jump");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setUndecorated(Settings.FULLSCREEN);
         setContentPane(new GamePanel(Settings.PX_WIDTH, Settings.PX_HEIGHT));
+        setIconImage(new ImageIcon("res/spritesheets/icon.png").getImage());
         
         pack();
         setResizable(false);

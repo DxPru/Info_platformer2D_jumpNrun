@@ -19,6 +19,7 @@ public class PlayState extends GameState {
     private Background background;
     private String bgPath, playerPath, overlayPath, fontPath, colorname;
     private float dx = 0.0f;
+    private float speed = 0.04f;
     
     public PlayState(GameManager gamemanager) {
         super(gamemanager);
@@ -54,6 +55,7 @@ public class PlayState extends GameState {
         AssetPool.addColor(colorname, new Color(214, 157, 100));
         Camera.setPosition(0, 0);
         score = 0;
+        speed = 0.04f;
         gameObjects = new ArrayList<GameObject>();
         background = new Background(bgPath);
         background.addBg();
@@ -67,20 +69,35 @@ public class PlayState extends GameState {
         save();
         Camera.setPosition(0, 0);
         score = 0;
+        speed = 0.04f;
+        Player player = new Player(new Vector2f(48f, 14f), playerPath);
+        if (gamemanager.getLoginname().equals("DxPru")) {
+            player.setCheat(true);
+        } else if (gamemanager.getLoginname().equals("Gape Horn")) {
+            score = 50f;
+            player.setCheat(true);
+        } else if (gamemanager.getLoginname().equals("gggga")) {
+            score = 100f;
+            player.setCheat(true);
+        } else if (gamemanager.getLoginname().equals("soren")) {
+            speed += 50f / 1500f;
+        } else if (gamemanager.getLoginname().equals("8=====D")) {
+            speed += 100f / 1500f;
+        }
         dx = 0.f;
         gameObjects = new ArrayList<GameObject>();
         background = new Background(bgPath);
         background.addBg();
         background.addBg();
         tilemanager.reset();
-        gameObjects.add(new Player(new Vector2f(48f, 14f), playerPath));
+        gameObjects.add(player);
         System.out.println("Reset");
     }
     
     @Override
     public void update(float dt) {
         score += (dt / 1000000) * 0.00025;
-        if (dx < 0.04f + (score / 1500)) {
+        if (dx < speed + (score / 1500)) {
             dx += 0.00001f * (dt / 1000000);
         }
         Camera.movePosition(dx * (dt / 1000000), 0.0f);

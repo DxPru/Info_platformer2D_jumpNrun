@@ -76,13 +76,13 @@ public class MenuState extends GameState {
         for (Button button : buttons) {
             renderdImages.add(button.getRenderedImage());
         }
-        Sprite background = AssetPool.getSpriteSheet("res/spritesheets/LoadingScreen.png").getSprite(0, 0);
+        Sprite background = AssetPool.getSpriteSheet("res/spritesheets/LoadingScreen.png").getSprite(0, 3);
         renderdImages.add(0, new RenderedImage(background.getImg(), new Vector2f(), background.getSize()));
         renderer.render(g, renderdImages);
         
         g.setFont(AssetPool.getFont(font));
         g.setColor(AssetPool.getColor(color));
         g.drawString("Highscore: " + gamemanager.getHighScore(), 200, 200);
-        g.drawString(gamemanager.getLoginname(), (int) ((buttons[1].getPos().x + 10) * Settings.SCALE),(int) ((buttons[1].getPos().y + 20) * Settings.SCALE));
+        g.drawString(gamemanager.getDisplayname(), (int) ((buttons[1].getPos().x + 10) * Settings.SCALE),(int) ((buttons[1].getPos().y + 20) * Settings.SCALE));
     }
 }
