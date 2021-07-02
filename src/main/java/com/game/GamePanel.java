@@ -81,6 +81,11 @@ public class GamePanel extends JPanel {
         timerTask = new LoopTask();
     }
     
+    public void dispose() {
+        timerTask.cancel();
+        timer.cancel();
+    }
+    
     public void update(float dt) {
         this.gamemanager.update(dt);
     }

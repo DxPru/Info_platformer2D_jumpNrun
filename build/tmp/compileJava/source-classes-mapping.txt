@@ -26,8 +26,9 @@ com/game/views/GameOverView.java
  com.game.views.GameOverView
 com/game/graphics/Renderer.java
  com.game.graphics.Renderer
-com/game/Gui.java
- com.game.Gui
+com/game/tile/Background.java
+ com.game.tile.Background
+ com.game.tile.Background$BG
 com/game/util/physics/CollisionType.java
  com.game.util.physics.CollisionType
 com/game/views/StartView.java
@@ -38,8 +39,8 @@ com/game/util/data/Knot.java
  com.game.util.data.Knot
 com/game/views/PlayView.java
  com.game.views.PlayView
-com/game/GameLauncher.java
- com.game.GameLauncher
+com/game/util/Camera.java
+ com.game.util.Camera
 com/game/views/View.java
  com.game.views.View
 com/game/util/physics/Rect.java
@@ -48,12 +49,16 @@ com/game/util/data/DataManager.java
  com.game.util.data.DataManager
 com/game/util/RenderedImage.java
  com.game.util.RenderedImage
+com/game/tile/block/Block.java
+ com.game.tile.block.Block
+com/game/util/physics/Collision.java
+ com.game.util.physics.Collision
+com/game/GameLauncher.java
+ com.game.GameLauncher
 com/game/states/GameManager.java
  com.game.states.GameManager
 com/game/states/GameState.java
  com.game.states.GameState
-com/game/util/MouseHandler.java
- com.game.util.MouseHandler
 com/game/states/StartState.java
  com.game.states.StartState
 com/game/gameObjects/Button.java
@@ -67,32 +72,28 @@ com/game/states/GameOverState.java
 com/game/GamePanel.java
  com.game.GamePanel
  com.game.GamePanel$LoopTask
-com/game/states/MenuState.java
- com.game.states.MenuState
 com/game/gameObjects/ExitButton.java
  com.game.gameObjects.ExitButton
-com/game/gameObjects/GameObject.java
- com.game.gameObjects.GameObject
+com/game/gameObjects/Player.java
+ com.game.gameObjects.Player
+ com.game.gameObjects.Player$1
 com/game/util/KeyHandler.java
  com.game.util.KeyHandler
  com.game.util.KeyHandler$Key
-com/game/gameObjects/PlayButton.java
- com.game.gameObjects.PlayButton
 com/game/states/PlayState.java
  com.game.states.PlayState
 com/game/states/PauseState.java
  com.game.states.PauseState
-com/game/tile/block/Block.java
- com.game.tile.block.Block
-com/game/util/Camera.java
- com.game.util.Camera
-com/game/util/physics/Collision.java
- com.game.util.physics.Collision
+com/game/gameObjects/GameObject.java
+ com.game.gameObjects.GameObject
+com/game/states/MenuState.java
+ com.game.states.MenuState
+com/game/Gui.java
+ com.game.Gui
+ com.game.Gui$1
+com/game/util/MouseHandler.java
+ com.game.util.MouseHandler
 com/game/gameObjects/Entity.java
  com.game.gameObjects.Entity
-com/game/tile/Background.java
- com.game.tile.Background
- com.game.tile.Background$BG
-com/game/gameObjects/Player.java
- com.game.gameObjects.Player
- com.game.gameObjects.Player$1
+com/game/gameObjects/PlayButton.java
+ com.game.gameObjects.PlayButton
